@@ -24,7 +24,7 @@ class TaskViewModel(private val dao: DataAccessObject<Task>) : ViewModel() {
      * Launching a new coroutine to interact w/ data
      */
 
-    fun getTasks(): LiveData<List<Task>> =  dao.getAll()
+    fun getTasks(): LiveData<List<Task>> =  dao.getAll()    // WE DO NOT WANT TO USE THIS, WE NEED TO PHASE IT OUT
     fun getById(id: Int): LiveData<Task> = dao.getByID(id)
     fun insert(vararg element: Task) = viewModelScope.launch(Dispatchers.IO) { dao.insert(*element) }
     fun delete(vararg element: Task) = viewModelScope.launch(Dispatchers.IO) { dao.delete(*element) }

@@ -18,7 +18,7 @@ data class Hashtag(
     }
 
     companion object{
-        val hashtagTable = "hashtags"
+        const val hashtagTable = "hashtags"
     }
 
 }
