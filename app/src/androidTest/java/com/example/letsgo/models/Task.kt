@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = taskTable)
+@Entity(tableName = Task.taskTable)
 data class Task(
     @ColumnInfo(name = "sets") val sets: Int,
     @ColumnInfo(name = "reps") val reps: Int,
