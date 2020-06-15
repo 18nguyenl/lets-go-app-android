@@ -4,8 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-const val taskTable = "tasks"
-
 @Entity(tableName = taskTable)
 data class Task(
     @ColumnInfo(name = "sets") val sets: Int,
@@ -19,5 +17,9 @@ data class Task(
 
     override fun toString(): String {
         return "Sets = $sets\nReps = $reps\nTag = $tag\nIntensity = $intensity\nUnit = $unit\n"
+    }
+
+    companion object{
+        val taskTable = "tasks"
     }
 }

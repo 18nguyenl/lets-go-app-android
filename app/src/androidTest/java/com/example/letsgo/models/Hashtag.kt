@@ -4,8 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-const val hashtagTable = "hashtags"
-
 @Entity(tableName = hashtagTable)
 data class Hashtag(
     @ColumnInfo(name = "name") val name: String
@@ -15,6 +13,10 @@ data class Hashtag(
 
     override fun toString(): String {
         return "#$name"
+    }
+
+    companion object{
+        val hashtagTable = "hashtags"
     }
 
 }
