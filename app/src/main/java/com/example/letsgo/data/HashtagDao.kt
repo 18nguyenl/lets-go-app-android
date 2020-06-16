@@ -3,7 +3,7 @@ package com.example.letsgo.data
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.sqlite.db.SimpleSQLiteQuery
-import com.example.myfirstapp.models.Hashtag
+import com.example.letsgo.models.Hashtag
 
 @Dao
 interface HashtagDao : DataAccessObject<Hashtag> {
