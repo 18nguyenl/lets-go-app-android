@@ -10,24 +10,24 @@ import com.example.letsgo.viewmodels.TaskListViewModelFactory
 
 object InjectorUtils {
 
-    private fun getTaskRepository(
-        context: Context
-    ) = AppDatabase.getDatabase(context.applicationContext).taskDao()
+    private fun getTaskRepository(context: Context) = AppDatabase.getDatabase(context.applicationContext).taskDao()
 
-    private fun getHashtagRepository(
-        context: Context
-    ) = AppDatabase.getDatabase(context.applicationContext).hashtagDao()
+    private fun getHashtagRepository( context: Context) = AppDatabase.getDatabase(context.applicationContext).hashtagDao()
 
-    fun provideCounterModelFactory(
+    // ALL VIEWMODELS REQUIRE APPLICATION CONTEXT
+
+    // counter VM requires the ID of the task being performed
+    fun provideCounterViewModelFactory(
         context: Context,
         id: Int
     ) = CounterViewModelFactory(id, getTaskRepository(context), getHashtagRepository(context))
 
+    // create task VM has no other requirements
     fun provideCreateTaskModelFactory(
-        context: Context,
-        ids: IntArray
+        context: Context
     ) = CreateTaskViewModelFactory(getTaskRepository(context))
 
+    // task list VM requires array of IDs of tasks being displayed
     fun provideTaskListViewModelFactory(
         context: Context,
         ids: IntArray

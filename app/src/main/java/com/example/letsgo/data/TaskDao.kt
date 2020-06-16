@@ -2,7 +2,6 @@ package com.example.letsgo.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import androidx.sqlite.db.SimpleSQLiteQuery
 import com.example.letsgo.models.Task
 
 @Dao
