@@ -28,6 +28,8 @@ data class Task(
 
     }
 
+    fun getTotalReps() = sets * reps
+
     companion object{
         const val taskTable = "tasks"
     }
