@@ -19,19 +19,33 @@ class TaskViewModel(private val dao: DataAccessObject<Task>) : ViewModel() {
         _selectedTask.value = task
     }
 
-    /**
-     * Launching a new coroutine to interact w/ data
-     */
+    fun getTasks(): List<Task> =  dao.getAll()    // WE DO NOT WANT TO USE THIS, WE NEED TO PHASE IT OUT
+    fun getTasks(ids: IntArray) : List<@JvmSuppressWildcards Task> = dao.getByIDs(ids)
+    fun fetchById(id: Int) : @JvmSuppressWildcards Task = dao.fetchByID(id)
 
-    fun getTasks(): LiveData<List<Task>> =  dao.getAll()    // WE DO NOT WANT TO USE THIS, WE NEED TO PHASE IT OUT
-    fun fetchById(id: Int): LiveData<Task> = dao.fetchByID(id)
-    fun insert(vararg element: Task) = viewModelScope.launch(Dispatchers.IO) { dao.insert(*element) }
-    fun delete(vararg element: Task) = viewModelScope.launch(Dispatchers.IO) { dao.delete(*element) }
-    fun update(vararg element: Task) = viewModelScope.launch(Dispatchers.IO) { dao.update(*element) }
+    private fun insert(vararg element: Task) = viewModelScope.launch(Dispatchers.IO) { dao.insert(*element) }
+    private fun delete(vararg element: Task) = viewModelScope.launch(Dispatchers.IO) { dao.delete(*element) }
+    private fun update(vararg element: Task) = viewModelScope.launch(Dispatchers.IO) { dao.update(*element) }
 
-    fun assignHashtag(taskID: Int, hashtagID: Int){
+    fun createTask(sets: Int, reps: Int, intensity: Int, unit: String) : Task {
 
-        fetchById(hashtagID).value!!.addHashtag(taskID)
+        val creation = Task(sets, reps, "", intensity, unit, 0)
+        insert(creation)
+        return creation
+
+    }
+
+    fun deleteTask(id: Int) {
+
+        delete(fetchById(id))
+
+    }
+
+    fun assignHashtag(taskID: Int, hashtagID: Int) {
+
+        val task = fetchById(taskID)
+        task.setHashtag(hashtagID)
+        update(task)
 
     }
 

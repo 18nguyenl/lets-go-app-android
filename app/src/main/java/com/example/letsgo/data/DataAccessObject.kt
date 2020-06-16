@@ -1,6 +1,5 @@
 package com.example.letsgo.data
 
-import androidx.lifecycle.LiveData
 import androidx.sqlite.db.SimpleSQLiteQuery
 
 interface DataAccessObject<T> {
@@ -9,10 +8,10 @@ interface DataAccessObject<T> {
     fun delete(vararg element: @JvmSuppressWildcards T)
     fun update(vararg element: @JvmSuppressWildcards T)
 
-    fun getAll(): LiveData<List<@JvmSuppressWildcards T>>
-    fun getByIDs(ids: IntArray): LiveData<List<@JvmSuppressWildcards T>>
-    fun fetchByID(id: Int): LiveData<@JvmSuppressWildcards T>
-    fun getByQuery(query: SimpleSQLiteQuery): LiveData<List<@JvmSuppressWildcards T>>
-    fun fetchByQuery(query: SimpleSQLiteQuery): LiveData<@JvmSuppressWildcards T>
+    fun getAll(): List<@JvmSuppressWildcards T>
+    fun getByIDs(elementIDs: IntArray): List<@JvmSuppressWildcards T>
+    fun fetchByID(elementID: Int): @JvmSuppressWildcards T
+    fun getByQuery(query: SimpleSQLiteQuery): List<@JvmSuppressWildcards T>
+    fun fetchByQuery(query: SimpleSQLiteQuery): @JvmSuppressWildcards T
 
 }

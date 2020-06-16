@@ -1,28 +1,26 @@
 package com.example.letsgo.data
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.sqlite.db.SimpleSQLiteQuery
 import com.example.letsgo.models.Hashtag
-import com.example.myfirstapp.models.Hashtag
 
 @Dao
 interface HashtagDao : DataAccessObject<Hashtag> {
 
     @RawQuery(observedEntities = [Hashtag::class])
-    override fun getByQuery(query: SimpleSQLiteQuery): LiveData<List<@JvmSuppressWildcards Hashtag>>
+    override fun getByQuery(query: SimpleSQLiteQuery): List<@JvmSuppressWildcards Hashtag>
 
     @RawQuery(observedEntities = [Hashtag::class])
-    override fun fetchByQuery(query: SimpleSQLiteQuery): LiveData<@JvmSuppressWildcards Hashtag>
+    override fun fetchByQuery(query: SimpleSQLiteQuery): @JvmSuppressWildcards Hashtag
 
     @Query("SELECT * FROM ${Hashtag.hashtagTable}")
-    override fun getAll(): LiveData<List<@JvmSuppressWildcards Hashtag>>
+    override fun getAll(): List<@JvmSuppressWildcards Hashtag>
 
-    @Query("SELECT * FROM ${Hashtag.hashtagTable} WHERE id IN (:ids)")
-    override fun getByIDs(ids: IntArray): LiveData<List<@JvmSuppressWildcards Hashtag>>
+    @Query("SELECT * FROM ${Hashtag.hashtagTable} WHERE id IN (:hashtagIDs)")
+    override fun getByIDs(hashtagIDs: IntArray): List<@JvmSuppressWildcards Hashtag>
 
-    @Query("SELECT * FROM ${Hashtag.hashtagTable} WHERE id = :id")
-    override fun fetchByID(id: Int): LiveData<@JvmSuppressWildcards Hashtag>
+    @Query("SELECT * FROM ${Hashtag.hashtagTable} WHERE id = :hashtagID")
+    override fun fetchByID(hashtagID: Int): @JvmSuppressWildcards Hashtag
 
     @Insert
     override fun insert(vararg elements: @JvmSuppressWildcards Hashtag)
