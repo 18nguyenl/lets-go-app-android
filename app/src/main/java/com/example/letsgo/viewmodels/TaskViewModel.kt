@@ -10,18 +10,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class TaskViewModel(private val dao: DataAccessObject<Task>) : ViewModel() {
-    private val _selectedTask = MutableLiveData<Task>()
-    val selectedTask: LiveData<Task>
-        get() { return _selectedTask }
 
-    // Make accessing the current Task to be counted "globally" accessible
-    fun selectTask(task: Task) {
-        _selectedTask.value = task
-    }
+    var selectedTaskID: Int = 0
 
     fun getTasks(): List<Task> =  dao.getAll()    // WE DO NOT WANT TO USE THIS, WE NEED TO PHASE IT OUT
     fun getTasks(ids: IntArray) : List<@JvmSuppressWildcards Task> = dao.getByIDs(ids)
-    fun fetchById(id: Int) : @JvmSuppressWildcards Task = dao.fetchByID(id)
+    fun fetchTaskById(id: Int) : @JvmSuppressWildcards Task = dao.fetchByID(id)
 
     private fun insert(vararg element: Task) = viewModelScope.launch(Dispatchers.IO) { dao.insert(*element) }
     private fun delete(vararg element: Task) = viewModelScope.launch(Dispatchers.IO) { dao.delete(*element) }
@@ -37,13 +31,13 @@ class TaskViewModel(private val dao: DataAccessObject<Task>) : ViewModel() {
 
     fun deleteTask(id: Int) {
 
-        delete(fetchById(id))
+        delete(fetchTaskById(id))
 
     }
 
     fun assignHashtag(taskID: Int, hashtagID: Int) {
 
-        val task = fetchById(taskID)
+        val task = fetchTaskById(taskID)
         task.setHashtag(hashtagID)
         update(task)
 

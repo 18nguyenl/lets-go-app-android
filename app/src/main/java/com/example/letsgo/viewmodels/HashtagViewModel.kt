@@ -1,6 +1,5 @@
 package com.example.letsgo.viewmodels
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.sqlite.db.SimpleSQLiteQuery
@@ -13,8 +12,9 @@ import kotlinx.coroutines.launch
 class HashtagViewModel(private val dao: DataAccessObject<Hashtag>) : ViewModel() {
 
     // IF WE ADD DIFFERENT USERS, WE CANNOT LET FETCHBYNAME GET HASHTAGS ASSIGNED TO OTHER USERS BC IT ONLY CONSIDERS THE 'NAME' PARAMETER
-    fun fetchByID(id: Int) : @JvmSuppressWildcards Hashtag = dao.fetchByID(id)
-    fun fetchByName(name: String) : @JvmSuppressWildcards Hashtag = dao.fetchByQuery(SimpleSQLiteQuery("SELECT * FROM ${Hashtag.hashtagTable} WHERE name = $name"))
+    fun getHashtags(ids: IntArray) : List<@JvmSuppressWildcards Hashtag> = dao.getByIDs(ids)
+    fun fetchHashtagByID(id: Int) : @JvmSuppressWildcards Hashtag = dao.fetchByID(id)
+    fun fetchHashtagByName(name: String) : @JvmSuppressWildcards Hashtag = dao.fetchByQuery(SimpleSQLiteQuery("SELECT * FROM ${Hashtag.hashtagTable} WHERE name = $name"))
 
     private fun insert(vararg element: Hashtag) = viewModelScope.launch(Dispatchers.IO) { dao.insert(*element) }
     private fun delete(vararg element: Hashtag) = viewModelScope.launch(Dispatchers.IO) { dao.delete(*element) }
@@ -33,7 +33,7 @@ class HashtagViewModel(private val dao: DataAccessObject<Hashtag>) : ViewModel()
         val parentName = HashtagUtils.getPath(hashtag)
         if(!parentName.equals("")){
 
-            val parentTag: Hashtag = fetchByName(parentName)
+            val parentTag: Hashtag = fetchHashtagByName(parentName)
 
             // set parentID to this tag if it exists, otherwise create it
             parentID = parentTag.id ?: createHashtag(parentName).id
@@ -47,7 +47,7 @@ class HashtagViewModel(private val dao: DataAccessObject<Hashtag>) : ViewModel()
         // if this tag has a parent, add this tag as a child and update the parent (WHICH MUST NECESSARILY EXIST NOW)
         if(parentID != 0){
 
-            val parentTag: Hashtag = fetchByID(parentID)
+            val parentTag: Hashtag = fetchHashtagByID(parentID)
             parentTag.addChild(creation.id)
             update(parentTag)
 
@@ -59,7 +59,7 @@ class HashtagViewModel(private val dao: DataAccessObject<Hashtag>) : ViewModel()
 
     fun assignTask(hashtagID: Int, taskID: Int) {
 
-        val hashtag = fetchByID(hashtagID)
+        val hashtag = fetchHashtagByID(hashtagID)
         hashtag.addTask(taskID)
         update(hashtag)
 
