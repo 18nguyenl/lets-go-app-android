@@ -4,4 +4,5 @@
     <dimen name="subtitle">18sp</dimen>
     <dimen name="paragraph">14sp</dimen>
     <dimen name="input">48sp</dimen>
+    <dimen name="menu_tab">18sp</dimen>
 </resources>
