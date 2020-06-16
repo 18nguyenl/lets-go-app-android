@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.Title" parent="TextAppearance.AppCompat.Title">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/title</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/normal_text_color</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <style name="TextAppearance.Subtitle" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/subtitle</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/normal_text_color</item>
+    </style>
+
+    <style name="TextAppearance.Paragraph" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">@dimen/paragraph</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/normal_text_color</item>
+    </style>
+
+    <style name="TextAppearance.Input" parent="TextAppearance.AppCompat.Title">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/input</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/normal_text_color</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="TextAppearance.TagInput" parent="TextAppearance.AppCompat.Title">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">@dimen/paragraph</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/normal_text_color</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <style name="TextAppearance.CounterTitle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/counter_title</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/normal_text_color</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <style name="TextAppearance.CounterActionBarTitle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">@dimen/subtitle</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/normal_text_color</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+</resources>
