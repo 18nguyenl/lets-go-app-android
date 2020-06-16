@@ -35,11 +35,14 @@ object HashtagUtils {
             index--
         }
 
-        // if this is -1 or 0, no parent was found
-            // if index == -1, the string does not contain a slash
-            // if index == 0, the first character is a slash
-        if(index <= 0)
+        // if index is -1, no parent was found because there are no slashes
+        if(index < 0)
+            return ""
+
+        // if index is 0, no parent was found because the first character is a slash
+        if(index == 0 || index == hashtag.length - 1)
             throw StringIndexOutOfBoundsException()
+
 
         // return string up until the last slash
         return hashtag.substring(0, index)
@@ -50,6 +53,21 @@ object HashtagUtils {
     fun getParent(hashtag: String) : String{
 
         return getLowest(getPath(hashtag))
+
+    }
+
+    // checks whether a given string is a valid hashtag
+    fun verifyHashtag(hashtag: String) : Boolean{
+
+        // if hashtag length is less than 1 (empty string), INVALID
+        if(hashtag.length < 1)
+            return false
+
+        // if first or last character is a slash, INVALID
+        if(hashtag[0] == '/' || hashtag[hashtag.length - 1] == '/')
+            return false
+
+        return true
 
     }
 
