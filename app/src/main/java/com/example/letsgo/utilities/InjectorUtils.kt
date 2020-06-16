@@ -12,7 +12,7 @@ object InjectorUtils {
 
     private fun getTaskRepository(context: Context) = AppDatabase.getDatabase(context.applicationContext).taskDao()
 
-    private fun getHashtagRepository( context: Context) = AppDatabase.getDatabase(context.applicationContext).hashtagDao()
+    private fun getHashtagRepository(context: Context) = AppDatabase.getDatabase(context.applicationContext).hashtagDao()
 
     // ALL VIEWMODELS REQUIRE APPLICATION CONTEXT
 

@@ -1,10 +1,11 @@
-package com.example.letsgo
+package com.example.letsgo.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.letsgo.R
 
 /**
  * A simple [Fragment] subclass.

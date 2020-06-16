@@ -1,8 +1,9 @@
-package com.example.letsgo
+package com.example.letsgo.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.example.letsgo.R
 import com.example.letsgo.databinding.ActivityAppBinding
 
 class AppActivity : AppCompatActivity() {
@@ -11,7 +12,9 @@ class AppActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<ActivityAppBinding>(this, R.layout.activity_app)
+        binding = DataBindingUtil.setContentView<ActivityAppBinding>(this,
+            R.layout.activity_app
+        )
 
         // ActionBar Setup
         setSupportActionBar(binding.toolbar)
