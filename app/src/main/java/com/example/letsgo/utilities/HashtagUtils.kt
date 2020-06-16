@@ -49,20 +49,6 @@ object HashtagUtils {
 
     }
 
-    fun hasParent(hashtag: String) : Boolean {
-
-        return !getPath(hashtag).equals("")
-
-    }
-
-    // given input string "Root/Parent/Child", this function returns "Parent"
-    // POSSIBLY NOT NEEDED
-    //fun getParent(hashtag: String) : String{
-
-    //    return getLowest(getPath(hashtag))
-
-    //}
-
     // checks whether a given string is a valid hashtag
     fun verifyHashtag(hashtag: String) : Boolean {
 
