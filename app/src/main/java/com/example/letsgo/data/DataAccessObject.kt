@@ -17,6 +17,8 @@ interface DataAccessObject<T> {
 
     fun deleteByID(id: Int)
 
+    fun getByIDs(elementIDs: IntArray): LiveData<List<@JvmSuppressWildcards T>>
+    fun fetchByID(elementID: Int): LiveData<@JvmSuppressWildcards T>
     fun getByQuery(query: SimpleSQLiteQuery): LiveData<List<@JvmSuppressWildcards T>>
     fun fetchByQuery(query: SimpleSQLiteQuery): LiveData<@JvmSuppressWildcards T>
 

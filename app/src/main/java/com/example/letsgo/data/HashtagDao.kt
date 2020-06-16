@@ -15,10 +15,10 @@ interface HashtagDao : DataAccessObject<Hashtag> {
     override fun fetchByQuery(query: SimpleSQLiteQuery): LiveData<@JvmSuppressWildcards Hashtag>
 
     @Query("SELECT * FROM ${Hashtag.hashtagTable} WHERE id IN (:hashtagIDs)")
-    fun getByIDs(hashtagIDs: IntArray): LiveData<List<@JvmSuppressWildcards Hashtag>>
+    override fun getByIDs(hashtagIDs: IntArray): LiveData<List<@JvmSuppressWildcards Hashtag>>
 
     @Query("SELECT * FROM ${Hashtag.hashtagTable} WHERE id = :hashtagID")
-    fun fetchByID(hashtagID: Int): LiveData<@JvmSuppressWildcards Hashtag>
+    override fun fetchByID(hashtagID: Int): LiveData<@JvmSuppressWildcards Hashtag>
 
     @Insert
     override fun insert(vararg elements: Hashtag)

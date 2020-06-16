@@ -15,10 +15,10 @@ interface TaskDao : DataAccessObject<Task> {
    override fun fetchByQuery(query: SimpleSQLiteQuery): LiveData<@JvmSuppressWildcards Task>
 
    @Query("SELECT * FROM ${Task.taskTable} WHERE id IN (:taskIDs)")
-   fun getByIDs(taskIDs: IntArray): LiveData<List<@JvmSuppressWildcards Task>>
+   override fun getByIDs(taskIDs: IntArray): LiveData<List<@JvmSuppressWildcards Task>>
 
    @Query("SELECT * FROM ${Task.taskTable} WHERE id = :taskID")
-   fun fetchByID(taskID: Int): LiveData<@JvmSuppressWildcards Task>
+   override fun fetchByID(taskID: Int): LiveData<@JvmSuppressWildcards Task>
 
    @Query("DELETE FROM ${Task.taskTable} WHERE id = :id")
    override fun deleteByID(id: Int)
