@@ -3,7 +3,7 @@ package com.example.letsgo.utilities
 object HashtagUtils {
 
     // given input string "Root/Parent/Child", this function returns "Child"
-    fun getLowest(hashtag: String) : String{
+    fun getLowest(hashtag: String) : String {
 
         var lowest: String = ""
         var index =  hashtag.length - 1
@@ -24,7 +24,7 @@ object HashtagUtils {
     }
 
     // given input string "Root/Parent/Child", this function returns "Root/Parent"
-    fun getPath(hashtag: String) : String{
+    fun getPath(hashtag: String) : String {
 
         var index =  hashtag.length - 1
 
@@ -49,15 +49,22 @@ object HashtagUtils {
 
     }
 
-    // given input string "Root/Parent/Child", this function returns "Parent"
-    fun getParent(hashtag: String) : String{
+    fun hasParent(hashtag: String) : Boolean {
 
-        return getLowest(getPath(hashtag))
+        return !getPath(hashtag).equals("")
 
     }
 
+    // given input string "Root/Parent/Child", this function returns "Parent"
+    // POSSIBLY NOT NEEDED
+    //fun getParent(hashtag: String) : String{
+
+    //    return getLowest(getPath(hashtag))
+
+    //}
+
     // checks whether a given string is a valid hashtag
-    fun verifyHashtag(hashtag: String) : Boolean{
+    fun verifyHashtag(hashtag: String) : Boolean {
 
         // if hashtag length is less than 1 (empty string), INVALID
         if(hashtag.length < 1)

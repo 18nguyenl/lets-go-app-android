@@ -8,7 +8,6 @@ import com.example.letsgo.models.Task
 import com.example.letsgo.data.DataAccessObject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 class TaskViewModel(private val dao: DataAccessObject<Task>) : ViewModel() {
     private val _selectedTask = MutableLiveData<Task>()
@@ -25,9 +24,11 @@ class TaskViewModel(private val dao: DataAccessObject<Task>) : ViewModel() {
      */
 
     fun getTasks(): LiveData<List<Task>> =  dao.getAll()    // WE DO NOT WANT TO USE THIS, WE NEED TO PHASE IT OUT
-    fun getById(id: Int): LiveData<Task> = dao.getByID(id)
+    fun getById(id: Int): LiveData<Task> = dao.fetchByID(id)
     fun insert(vararg element: Task) = viewModelScope.launch(Dispatchers.IO) { dao.insert(*element) }
     fun delete(vararg element: Task) = viewModelScope.launch(Dispatchers.IO) { dao.delete(*element) }
     fun update(vararg element: Task) = viewModelScope.launch(Dispatchers.IO) { dao.update(*element) }
+
+
 
 }

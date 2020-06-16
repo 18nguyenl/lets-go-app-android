@@ -18,7 +18,7 @@ interface TaskDao : DataAccessObject<Task> {
    override fun getByIDs(ids: IntArray): LiveData<List<@JvmSuppressWildcards Task>>
 
    @Query("SELECT * FROM ${Task.taskTable} WHERE id = :id")
-   override fun getByID(id: Int): LiveData<@JvmSuppressWildcards Task>
+   override fun fetchByID(id: Int): LiveData<@JvmSuppressWildcards Task>
 
    @Insert
    override fun insert(vararg elements: @JvmSuppressWildcards Task)

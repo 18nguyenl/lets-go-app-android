@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = Hashtag.hashtagTable)
 data class Hashtag(
-    @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "name") val name: String,    // a hashtag's name contains its parent directories, eg. "Parent1/Parent2/ThisTag"
     @ColumnInfo(name = "parentID") val parentID: Int,
     @ColumnInfo(name = "childIDs") val childIDs: HashSet<Int>
 ) {
@@ -15,6 +15,10 @@ data class Hashtag(
 
     override fun toString(): String {
         return "#$name"
+    }
+
+    fun addChild(childID: Int){
+        childIDs.add(childID)
     }
 
     companion object{
