@@ -20,6 +20,6 @@ data class Task(
     }
 
     companion object{
-        val taskTable = "tasks"
+        const val taskTable = "tasks"
     }
 }
