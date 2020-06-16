@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.letsgo.models.Task
-import com.example.letsgo.data.DataAccessObject
+import com.example.letsgo.data.TaskDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class TaskListViewModel(
-    dao: DataAccessObject<Task>,
+    dao: TaskDao,
     ids: IntArray
 ) : ViewModel() {
 

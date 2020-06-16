@@ -8,31 +8,22 @@ import com.example.letsgo.models.Hashtag
 @Dao
 interface HashtagDao : DataAccessObject<Hashtag> {
 
-    @RawQuery(observedEntities = [Hashtag::class])
-    override fun getByQuery(query: SimpleSQLiteQuery): LiveData<List<@JvmSuppressWildcards Hashtag>>
-
-    @RawQuery(observedEntities = [Hashtag::class])
-    override fun fetchByQuery(query: SimpleSQLiteQuery): LiveData<@JvmSuppressWildcards Hashtag>
-
-    @Query("SELECT * FROM ${Hashtag.hashtagTable} WHERE id IN (:hashtagIDs)")
-    override fun getByIDs(hashtagIDs: IntArray): LiveData<List<@JvmSuppressWildcards Hashtag>>
-
     @Query("SELECT * FROM ${Hashtag.hashtagTable} WHERE id = :hashtagID")
-    override fun fetchByID(hashtagID: Int): LiveData<@JvmSuppressWildcards Hashtag>
+    fun fetchByID(hashtagID: Int): LiveData<@JvmSuppressWildcards Hashtag>
 
-    @Insert
-    override fun insert(vararg elements: Hashtag)
+    //@RawQuery(observedEntities = [Hashtag::class])
+    //fun getByQuery(query: SimpleSQLiteQuery): LiveData<List<@JvmSuppressWildcards Hashtag>>
 
-    @Delete
-    override fun delete(vararg element: Hashtag)
+    //@RawQuery(observedEntities = [Hashtag::class])
+    //fun fetchByQuery(query: SimpleSQLiteQuery): LiveData<@JvmSuppressWildcards Hashtag>
 
-    @Query("DELETE FROM ${Hashtag.hashtagTable} WHERE id = :id")
-    override fun deleteByID(id: Int)
+    //@Query("SELECT * FROM ${Hashtag.hashtagTable} WHERE id IN (:hashtagIDs)")
+    //fun getByIDs(hashtagIDs: IntArray): LiveData<List<@JvmSuppressWildcards Hashtag>>
 
-    @Update
-    override fun update(vararg element: Hashtag)
+    //@Query("DELETE FROM ${Hashtag.hashtagTable} WHERE id = :id")
+    //fun deleteByID(id: Int)
 
-    @Query("SELECT id FROM ${Hashtag.hashtagTable}")
-    override fun getAllIDs(): LiveData<List<Int>>
+    //@Query("SELECT id FROM ${Hashtag.hashtagTable}")
+    //fun getAllIDs(): LiveData<List<Int>>
 
 }

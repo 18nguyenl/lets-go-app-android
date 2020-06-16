@@ -13,6 +13,10 @@ object InjectorUtils {
         context: Context
     ) = AppDatabase.getDatabase(context.applicationContext).taskDao()
 
+    private fun getHashtagRepository(
+        context: Context
+    ) = AppDatabase.getDatabase(context.applicationContext).hashtagDao()
+
     fun provideTaskListViewModelFactory(
         context: Context,
         ids: IntArray

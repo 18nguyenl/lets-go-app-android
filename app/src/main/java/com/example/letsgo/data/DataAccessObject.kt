@@ -15,14 +15,4 @@ interface DataAccessObject<T> {
     @Update
     fun update(vararg element: T)
 
-    fun deleteByID(id: Int)
-
-    fun getByIDs(elementIDs: IntArray): LiveData<List<@JvmSuppressWildcards T>>
-    fun fetchByID(elementID: Int): LiveData<@JvmSuppressWildcards T>
-    fun getByQuery(query: SimpleSQLiteQuery): LiveData<List<@JvmSuppressWildcards T>>
-    fun fetchByQuery(query: SimpleSQLiteQuery): LiveData<@JvmSuppressWildcards T>
-
-    // FOR TESTING WHILE SINGLE-USER ONLY
-    fun getAllIDs(): LiveData<List<Int>>
-
 }

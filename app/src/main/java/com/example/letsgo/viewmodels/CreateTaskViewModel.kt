@@ -5,14 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.sqlite.db.SimpleSQLiteQuery
 import com.example.letsgo.models.Task
-import com.example.letsgo.data.DataAccessObject
+import com.example.letsgo.data.TaskDao
 import com.example.letsgo.models.Hashtag
 import com.example.letsgo.utilities.HashtagUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CreateTaskViewModel(
-    private val taskDao: DataAccessObject<Task>
+    private val taskDao: TaskDao
     //private val hashtagDao: DataAccessObject<Hashtag>
 )  : ViewModel() {
 

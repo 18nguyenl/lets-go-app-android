@@ -12,6 +12,7 @@ const val DATABASE_NAME = "lfg-db"
 @Database(entities = arrayOf(Task::class, Hashtag::class), version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun taskDao(): TaskDao
+    abstract fun hashtagDao(): HashtagDao
 
     companion object {
         // Singleton prevents multiple instances of database opening at the
