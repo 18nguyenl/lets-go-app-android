@@ -1,17 +1,26 @@
 package com.example.letsgo.data
 
+import androidx.lifecycle.LiveData
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Update
 import androidx.sqlite.db.SimpleSQLiteQuery
 
 interface DataAccessObject<T> {
 
-    fun insert(vararg elements: @JvmSuppressWildcards T)
-    fun delete(vararg element: @JvmSuppressWildcards T)
-    fun update(vararg element: @JvmSuppressWildcards T)
+    @Insert
+    fun insert(vararg elements: T)
+    @Delete
+    fun delete(vararg element: T)
+    @Update
+    fun update(vararg element: T)
 
-    fun getAll(): List<@JvmSuppressWildcards T>
-    fun getByIDs(elementIDs: IntArray): List<@JvmSuppressWildcards T>
-    fun fetchByID(elementID: Int): @JvmSuppressWildcards T
-    fun getByQuery(query: SimpleSQLiteQuery): List<@JvmSuppressWildcards T>
-    fun fetchByQuery(query: SimpleSQLiteQuery): @JvmSuppressWildcards T
+    fun deleteByID(id: Int)
+
+    fun getByQuery(query: SimpleSQLiteQuery): LiveData<List<@JvmSuppressWildcards T>>
+    fun fetchByQuery(query: SimpleSQLiteQuery): LiveData<@JvmSuppressWildcards T>
+
+    // FOR TESTING WHILE SINGLE-USER ONLY
+    fun getAllIDs(): LiveData<List<Int>>
 
 }

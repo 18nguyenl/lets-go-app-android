@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.letsgo.models.Task
 import com.example.letsgo.data.DataAccessObject
 
-class TaskViewModelFactory(private val dao: DataAccessObject<Task>): ViewModelProvider.Factory {
+class TaskListViewModelFactory(private val dao: DataAccessObject<Task>, private val ids: IntArray): ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T = TaskViewModel(dao) as T
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T = TaskListViewModel(dao, ids) as T
 
 }

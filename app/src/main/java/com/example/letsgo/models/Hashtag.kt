@@ -12,7 +12,7 @@ data class Hashtag(
     @ColumnInfo(name = "taskIDs") val taskIDs: HashSet<Int>
 ) {
 
-    @PrimaryKey(autoGenerate = true) var id: Int = 0
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") var id: Int = 0
 
     override fun toString(): String {
         return "#$name"
