@@ -3,10 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
-    app:startDestination="@id/fragmentRecentTasks">
+    app:startDestination="@id/recentTasksFragment">
 
     <fragment
-        android:id="@+id/fragmentRecentTasks"
+        android:id="@+id/recentTasksFragment"
         android:name="com.example.letsgo.RecentTasksFragment"
-        tools:layout="@layout/fragment_recent_tasks" />
+        tools:layout="@layout/fragment_recent_tasks" >
+        <action
+            android:id="@+id/action_fragmentRecentTasks_to_createTaskFragment"
+            app:destination="@id/createTaskFragment" />
+        <action
+            android:id="@+id/action_fragmentRecentTasks_to_counterFragment"
+            app:destination="@id/counterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createTaskFragment"
+        android:name="com.example.letsgo.CreateTaskFragment" />
+    <fragment
+        android:id="@+id/counterFragment"
+        android:name="com.example.letsgo.CounterFragment"
+        tools:layout="@layout/fragment_counter" />
 </navigation>
