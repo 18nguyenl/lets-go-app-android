@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.letsgo.models.Task
 import com.example.letsgo.data.AppDatabase
 import com.example.letsgo.data.DataAccessObject
+import com.example.letsgo.viewmodels.CounterViewModelFactory
 import com.example.letsgo.viewmodels.CreateTaskViewModelFactory
 import com.example.letsgo.viewmodels.TaskListViewModelFactory
 
@@ -17,14 +18,19 @@ object InjectorUtils {
         context: Context
     ) = AppDatabase.getDatabase(context.applicationContext).hashtagDao()
 
-    fun provideTaskListViewModelFactory(
+    fun provideCounterModelFactory(
         context: Context,
-        ids: IntArray
-    ) = TaskListViewModelFactory(getTaskRepository(context), ids)
+        id: Int
+    ) = CounterViewModelFactory(id, getTaskRepository(context), getHashtagRepository(context))
 
     fun provideCreateTaskModelFactory(
         context: Context,
         ids: IntArray
     ) = CreateTaskViewModelFactory(getTaskRepository(context))
+
+    fun provideTaskListViewModelFactory(
+        context: Context,
+        ids: IntArray
+    ) = TaskListViewModelFactory(getTaskRepository(context), ids)
 
 }
