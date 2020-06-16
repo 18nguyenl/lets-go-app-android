@@ -15,6 +15,10 @@ class HashtagViewModel(private val dao: DataAccessObject<Hashtag>) : ViewModel()
 
     fun createHashtag(hashtag: String) : Hashtag{
 
+        // if hashtag is invalid, throw an error
+        if(!HashtagUtils.verifyHashtag(hashtag))
+            throw Error()
+
         // we will not expect to create any child
         val childIDs: HashSet<Int> = HashSet()
         var parentID: Int = 0
