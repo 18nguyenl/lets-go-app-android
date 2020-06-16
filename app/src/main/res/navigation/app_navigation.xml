@@ -7,6 +7,6 @@
 
     <fragment
         android:id="@+id/fragmentRecentTasks"
-        android:name="com.example.letsgo.RecentTasks"
+        android:name="com.example.letsgo.RecentTasksFragment"
         tools:layout="@layout/fragment_recent_tasks" />
 </navigation>

@@ -8,10 +8,8 @@ import android.view.ViewGroup
 
 /**
  * A simple [Fragment] subclass.
- * Use the [RecentTasks.newInstance] factory method to
- * create an instance of this fragment.
  */
-class RecentTasks : Fragment() {
+class RecentTasksFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

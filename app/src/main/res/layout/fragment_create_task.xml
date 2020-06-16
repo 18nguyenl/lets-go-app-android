@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CreateTaskFragment">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/createTaskTitleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_lg"
+                    android:layout_marginEnd="@dimen/margin_lg"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearance.Title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/createSetInputText"
+                    style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/input_height_lg"
+                    android:layout_marginStart="@dimen/margin_lg"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/box_drawable"
+                    android:drawablePadding="0dp"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:inputType="number"
+                    android:padding="0dp"
+                    android:scrollHorizontally="false"
+                    android:singleLine="false"
+                    android:textAppearance="@style/TextAppearance.Input"
+                    android:textSize="48sp"
+                    app:layout_constraintEnd_toStartOf="@+id/createMultiplyText"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/createTaskTitleText" />
+
+                <EditText
+                    android:id="@+id/createIntensityInputText"
+                    style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/input_height_lg"
+                    android:layout_marginStart="@dimen/margin_lg"
+                    android:layout_marginTop="@dimen/margin_md"
+                    android:layout_marginEnd="@dimen/margin_md"
+                    android:layout_marginBottom="@dimen/margin_xxxl"
+                    android:background="@drawable/box_drawable"
+                    android:drawablePadding="0dp"
+                    android:gravity="center"
+                    android:hint="@string/create_task_intensity_input_hint_intensity"
+                    android:includeFontPadding="false"
+                    android:inputType="number"
+                    android:padding="0dp"
+                    android:scrollHorizontally="false"
+                    android:singleLine="false"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Subtitle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/createUnitInputText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/createIntensityTitleText" />
+
+                <TextView
+                    android:id="@+id/createMultiplyText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="×"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="85.333sp"
+                    android:typeface="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/createSetInputText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/createSetInputText" />
+
+                <EditText
+                    android:id="@+id/createRepInputText"
+                    style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/input_height_lg"
+                    android:layout_marginStart="@dimen/margin_md"
+                    android:layout_marginTop="@dimen/margin_xl"
+                    android:layout_marginEnd="@dimen/margin_lg"
+                    android:background="@drawable/box_drawable"
+                    android:drawablePadding="0dp"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:inputType="number"
+                    android:padding="0dp"
+                    android:scrollHorizontally="false"
+                    android:singleLine="false"
+                    android:textAppearance="@style/TextAppearance.Input"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/createMultiplyText"
+                    app:layout_constraintTop_toBottomOf="@+id/createTaskTitleText" />
+
+                <EditText
+                    android:id="@+id/tagText"
+                    style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/input_height_md"
+                    android:layout_marginStart="@dimen/margin_lg"
+                    android:layout_marginTop="@dimen/margin_md"
+                    android:layout_marginEnd="@dimen/margin_lg"
+                    android:background="@drawable/box_drawable"
+                    android:drawablePadding="0dp"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:inputType="text"
+                    android:padding="0dp"
+                    android:scrollHorizontally="false"
+                    android:singleLine="false"
+                    android:textAppearance="@style/TextAppearance.Paragraph"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/createTagInputText" />
+
+                <EditText
+                    android:id="@+id/createUnitInputText"
+                    style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/input_height_lg"
+                    android:layout_marginStart="@dimen/margin_xxs"
+                    android:layout_marginTop="@dimen/margin_md"
+                    android:layout_marginEnd="@dimen/margin_lg"
+                    android:layout_marginBottom="@dimen/margin_xxxl"
+                    android:background="@drawable/box_drawable"
+                    android:drawablePadding="0dp"
+                    android:gravity="center"
+                    android:hint="@string/create_task_intensity_input_hint_units"
+                    android:includeFontPadding="false"
+                    android:inputType="text"
+                    android:padding="0dp"
+                    android:scrollHorizontally="false"
+                    android:singleLine="false"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Subtitle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/createIntensityInputText"
+                    app:layout_constraintTop_toBottomOf="@+id/createIntensityTitleText" />
+
+                <TextView
+                    android:id="@+id/createTagInputText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_lg"
+                    android:layout_marginTop="@dimen/margin_xl"
+                    android:text="@string/create_task_tag_list_title"
+                    android:textAppearance="@style/TextAppearance.Subtitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/createSetInputText" />
+
+                <TextView
+                    android:id="@+id/createIntensityTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_lg"
+                    android:layout_marginTop="@dimen/margin_xl"
+                    android:text="@string/create_task_intensity_input_title"
+                    android:textAppearance="@style/TextAppearance.Subtitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tagText" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="@dimen/margin_lg"
+            android:clickable="true"
+            android:src="@android:drawable/ic_menu_add"
+            android:tint="#1AFFFFFF"
+            app:fabSize="auto"
+            app:rippleColor="@color/colorPrimary" />
+
+    </FrameLayout>
+</layout>

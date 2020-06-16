@@ -21,4 +21,20 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/normal_text_color</item>
     </style>
+
+    <style name="TextAppearance.Input" parent="TextAppearance.AppCompat.Title">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/input</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/normal_text_color</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="TextAppearance.TagInput" parent="TextAppearance.AppCompat.Title">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">@dimen/paragraph</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/normal_text_color</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
 </resources>

@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Let\'s Go</string>
+    <!-- Recent Tasks Screen -->
     <string name="recent_task_list_title">Recent Tasks</string>
+    <!-- Create Task Screen -->
+    <string name="create_task_tag_list_title">Recent</string>
+    <string name="create_task_intensity_input_title">Intensity</string>
+    <string name="create_task_intensity_input_hint_intensity">Input</string>
+    <string name="create_task_intensity_input_hint_units">Units</string>
+    <!-- Counter Screen -->
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
