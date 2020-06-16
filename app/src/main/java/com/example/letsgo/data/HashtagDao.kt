@@ -13,7 +13,7 @@ interface HashtagDao : DataAccessObject<Hashtag> {
     override fun getByQuery(query: SimpleSQLiteQuery): LiveData<List<@JvmSuppressWildcards Hashtag>>
 
     @RawQuery(observedEntities = [Hashtag::class])
-    override fun getByQuery(query: SimpleSQLiteQuery): List<@JvmSuppressWildcards Hashtag>
+    override fun fetchByQuery(query: SimpleSQLiteQuery): LiveData<@JvmSuppressWildcards Hashtag>
 
     @Query("SELECT * FROM ${Hashtag.hashtagTable}")
     override fun getAll(): LiveData<List<@JvmSuppressWildcards Hashtag>>

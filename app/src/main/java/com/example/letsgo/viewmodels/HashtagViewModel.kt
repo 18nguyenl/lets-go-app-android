@@ -23,14 +23,26 @@ class HashtagViewModel(private val dao: DataAccessObject<Hashtag>) : ViewModel()
         val parentName = HashtagUtils.getPath(hashtag)
         if(!parentName.equals("")){
 
-            val parentTag: Hashtag? = dao.getByQuery(SimpleSQLiteQuery("SELECT * FROM ${Hashtag.hashtagTable} WHERE name = $parentName"))
+            val parentTag: Hashtag? = dao.fetchByQuery(SimpleSQLiteQuery("SELECT * FROM ${Hashtag.hashtagTable} WHERE name = $parentName")).value
 
-            // if parentTag
+            // set parentID to this tag if it exists, otherwise create it
+            parentID = parentTag?.id ?: createHashtag(parentName).id
 
         }
 
+        // create hashtag and insert into database
         val creation = Hashtag(hashtag, parentID, childIDs)
         dao.insert(Hashtag(hashtag, parentID, childIDs))
+
+        // if this tag has a parent, add this tag as a child and update the parent (WHICH MUST NECESSARILY EXIST NOW)
+        if(parentID != 0){
+
+            val parentTag: Hashtag = dao.fetchByQuery(SimpleSQLiteQuery("SELECT * FROM ${Hashtag.hashtagTable} WHERE name = $parentName")).value!!
+            parentTag.addChild(creation.id)
+            dao.update(parentTag)
+
+        }
+
         return creation
 
     }

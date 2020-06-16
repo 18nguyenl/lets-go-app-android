@@ -11,6 +11,9 @@ interface TaskDao : DataAccessObject<Task> {
    @RawQuery(observedEntities = [Task::class])
    override fun getByQuery(query: SimpleSQLiteQuery): LiveData<List<@JvmSuppressWildcards Task>>
 
+   @RawQuery(observedEntities = [Task::class])
+   override fun fetchByQuery(query: SimpleSQLiteQuery): LiveData<@JvmSuppressWildcards Task>
+
    @Query("SELECT * FROM ${Task.taskTable}")
    override fun getAll(): LiveData<List<@JvmSuppressWildcards Task>>
 
