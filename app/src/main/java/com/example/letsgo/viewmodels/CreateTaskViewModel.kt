@@ -63,7 +63,7 @@ class CreateTaskViewModel(
 
         //if this hashtag is a child of another, check if it exists
         val parentName = HashtagUtils.getPath(hashtag)
-        if(!parentName.equals("")){
+        if(parentName != ""){
 
             // set parentID to this tag if it exists, otherwise create it
             parentID = fetchHashtagByName(parentName).value?.id ?: createHashtag(parentName).id
