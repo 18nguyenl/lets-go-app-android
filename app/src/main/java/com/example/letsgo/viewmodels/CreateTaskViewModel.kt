@@ -36,23 +36,17 @@ class CreateTaskViewModel(
         hashtagName: String
     ) : Task {
 
-        // HASHTAG FUNCTIONS ARE GRAYED OUT
-        var hashtagID = 0
-
-        // if hashtag does not exist, create the hashtag
-        if(!hashtagName.equals(""))
-            hashtagID = fetchHashtagByName(hashtagName).value?.id ?: createHashtag(hashtagName).id
+        // if hashtag does not exist, create the hashtag (ALL tasks require a hashtag)
+        val hashtag = fetchHashtagByName(hashtagName).value ?: createHashtag(hashtagName)
 
         // instantiate task and insert into task database
-        val creation = Task(sets, reps, "", intensity, unit, hashtagID)
+        val creation = Task(sets, reps, intensity, unit, hashtag.name, hashtag.id)
         insertTask(creation)
 
         // assign task to hashtag and update hashtag
-        if(hashtagID != 0){
-            val hashtag = fetchHashtagByID(hashtagID).value!!
-            hashtag.addTask(creation.id)
-            updateHashtag(hashtag)
-        }
+        //      by this point, because tasks always require a hashtag, the hashtag will always exist
+        hashtag.addTask(creation.id)
+        updateHashtag(hashtag)
 
         return creation
 
