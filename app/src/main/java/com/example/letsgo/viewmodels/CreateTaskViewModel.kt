@@ -18,21 +18,29 @@ class CreateTaskViewModel(
 )  : ViewModel() {
 
 
+    // task repository functions
     private fun insertTask(vararg element: Task) = viewModelScope.launch(Dispatchers.IO) { taskDao.insert(*element) }
 
-    private fun insertHashtag(vararg element: Hashtag) = viewModelScope.launch(Dispatchers.IO) { hashtagDao.insert(*element) }
-    private fun updateHashtag(vararg element: Hashtag) = viewModelScope.launch(Dispatchers.IO) { hashtagDao.update(*element) }
-    private fun fetchHashtagByID(id: Int) : LiveData<@JvmSuppressWildcards Hashtag> = hashtagDao.fetchByID(id)
-    private fun fetchHashtagByName(name: String) : LiveData<@JvmSuppressWildcards Hashtag> = hashtagDao.fetchByQuery(
-        SimpleSQLiteQuery("SELECT * FROM ${Hashtag.hashtagTable} WHERE name = $name")
-    )
+    // hashtag repository functions
+    private fun insertHashtag(
+        vararg element: Hashtag
+    ) = viewModelScope.launch(Dispatchers.IO) { hashtagDao.insert(*element) }
+    private fun updateHashtag(
+        vararg element: Hashtag
+    ) = viewModelScope.launch(Dispatchers.IO) { hashtagDao.update(*element) }
+    private fun fetchHashtagByID(
+        id: Int
+    ) : LiveData<@JvmSuppressWildcards Hashtag> = hashtagDao.fetchByID(id)
+    private fun fetchHashtagByName(
+        name: String
+    ) : LiveData<@JvmSuppressWildcards Hashtag> = hashtagDao.fetchByName(name)
+    // user ID should be added to the above function
 
     fun createTask(
         sets: Int,
         reps: Int,
         intensity: Int,
         unit: String,
-        //hashtagID: Int,
         hashtagName: String
     ) : Task {
 
