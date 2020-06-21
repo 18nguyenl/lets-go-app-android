@@ -30,11 +30,10 @@ class CreateTaskViewModel(
     ) = viewModelScope.launch(Dispatchers.IO) { hashtagDao.update(*element) }
     private fun fetchHashtagByID(
         id: Int
-    ) : LiveData<@JvmSuppressWildcards Hashtag> = hashtagDao.fetchByID(id)
+    ) = hashtagDao.fetchByID(id)
     private fun fetchHashtagByName(
         name: String
-    ) : LiveData<@JvmSuppressWildcards Hashtag> = hashtagDao.fetchByName(name)
-    // user ID should be added to the above function
+    ) = hashtagDao.fetchByName(name)
 
     fun createTask(
         sets: Int,

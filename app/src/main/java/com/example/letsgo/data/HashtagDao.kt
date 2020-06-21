@@ -13,6 +13,7 @@ interface HashtagDao : DataAccessObject<Hashtag> {
 
     @Query("SELECT * FROM ${Hashtag.hashtagTable} WHERE name = :hashtagName")
     fun fetchByName(hashtagName: String): LiveData<@JvmSuppressWildcards Hashtag>
+    // user ID should be added to the above function
 
     //@RawQuery(observedEntities = [Hashtag::class])
     //fun getByQuery(query: SimpleSQLiteQuery): LiveData<List<@JvmSuppressWildcards Hashtag>>
