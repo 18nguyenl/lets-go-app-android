@@ -1,20 +1,20 @@
 package com.example.letsgo.views
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
+import android.graphics.*
 import android.graphics.Paint.ANTI_ALIAS_FLAG
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.ColorInt
+import kotlin.random.Random
 
 class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
     @ColorInt
     private val setsPaintColor:Int = Color.rgb( 223, 34, 34)
+    private val setsPaintColorTransparent = Color.argb(0, 223, 34, 34)
     private val minSetsRadius = 200f
+    private val maxSetsRadius = 500f
 
     private lateinit var extraCanvas: Canvas
     private lateinit var extraBitmap: Bitmap
@@ -44,7 +44,10 @@ class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs
 
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                extraCanvas.drawCircle(x, y, minSetsRadius, pointPaint)
+
+                val radius: Float = Random.nextInt(minSetsRadius.toInt(), maxSetsRadius.toInt()).toFloat()
+                pointPaint.shader = RadialGradient(x, y, radius, setsPaintColor, setsPaintColorTransparent, Shader.TileMode.CLAMP)
+                extraCanvas.drawCircle(x, y, radius, pointPaint)
                 println("x: $x, y: $y")
                 invalidate()
             }
