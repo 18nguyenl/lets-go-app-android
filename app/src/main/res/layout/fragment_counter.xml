@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".CounterFragment">
 
+    <com.example.letsgo.views.CounterCanvas
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" />
+
     <TextView
         android:id="@+id/counterTitleText"
         android:layout_width="wrap_content"
