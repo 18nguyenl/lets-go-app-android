@@ -3,7 +3,7 @@ package com.example.letsgo.utilities.shapes
 import android.graphics.*
 import kotlin.random.Random
 
-class Circle(paintColor: Int, paintColorTransluscent: Int, val minRadius: Int, val maxRadius: Int) : Shape(paintColor, paintColorTransluscent) {
+class CircleDrawer(paintColor: Int, paintColorTransluscent: Int, val minRadius: Int, val maxRadius: Int) : ShapeDrawer(paintColor, paintColorTransluscent) {
 
     fun radius(sets: Int, setsTotal: Int) = Random.nextInt(minRadius, maxRadius).toFloat()
 

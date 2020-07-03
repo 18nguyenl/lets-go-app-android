@@ -7,18 +7,20 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.ColorInt
-import com.example.letsgo.utilities.shapes.Circle
-import com.example.letsgo.utilities.shapes.Shape
+import com.example.letsgo.utilities.shapes.CircleDrawer
+import com.example.letsgo.utilities.shapes.ShapeDrawer
 
-class CounterView(context: Context, attrs: AttributeSet) : View(context, attrs) {
+class CounterCanvasView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     @ColorInt
     private val setsPaintColor:Int = Color.rgb( 223, 34, 34)
     private val setsPaintColorTransparent = Color.argb(0, 223, 34, 34)
 
     private lateinit var canvas: Canvas
     private lateinit var bitmap: Bitmap
+    private val shapeDrawer: ShapeDrawer = CircleDrawer(setsPaintColor, setsPaintColorTransparent, 200, 500)
 
-    private val shapeDrawer: Shape = Circle(setsPaintColor, setsPaintColorTransparent, 200, 500)
+    private val sets = 5
+    private val setsTotal = 5
 
     private val pointPaint = Paint(ANTI_ALIAS_FLAG).apply {
         color = setsPaintColor
@@ -46,12 +48,9 @@ class CounterView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
 
-                shapeDrawer.draw(canvas, x, y, 5, 5)
-                //val radius: Float = Random.nextInt(minSetsRadius.toInt(), maxSetsRadius.toInt()).toFloat()
-                //pointPaint.shader = RadialGradient(x, y, radius, setsPaintColor, setsPaintColorTransparent, Shader.TileMode.CLAMP)
-                //extraCanvas.drawCircle(x, y, radius, pointPaint)
-                //println("x: $x, y: $y")
+                shapeDrawer.draw(canvas, x, y, sets, setsTotal)
                 invalidate()
+
             }
         }
 
