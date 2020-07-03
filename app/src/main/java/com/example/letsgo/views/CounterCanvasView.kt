@@ -11,6 +11,12 @@ import com.example.letsgo.utilities.shapes.CircleDrawer
 import com.example.letsgo.utilities.shapes.ShapeDrawer
 
 class CounterCanvasView(context: Context, attrs: AttributeSet) : View(context, attrs) {
+
+    // should be passed from counterviewmodel
+    private val sets = 5
+    private val setsTotal = 5
+
+    // should also be passed from counterviewmodel?
     @ColorInt
     private val setsPaintColor:Int = Color.rgb( 223, 34, 34)
     private val setsPaintColorTransparent = Color.argb(0, 223, 34, 34)
@@ -18,9 +24,6 @@ class CounterCanvasView(context: Context, attrs: AttributeSet) : View(context, a
     private lateinit var canvas: Canvas
     private lateinit var bitmap: Bitmap
     private val shapeDrawer: ShapeDrawer = CircleDrawer(setsPaintColor, setsPaintColorTransparent, 200, 500)
-
-    private val sets = 5
-    private val setsTotal = 5
 
     private val pointPaint = Paint(ANTI_ALIAS_FLAG).apply {
         color = setsPaintColor
