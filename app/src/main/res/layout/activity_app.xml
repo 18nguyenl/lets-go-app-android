@@ -16,8 +16,10 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolbar_height"
-            app:contentInsetStart="@dimen/app_padding"
             android:theme="@style/Widget.Toolbar"
+            app:contentInsetStart="@dimen/app_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <fragment
