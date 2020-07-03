@@ -7,17 +7,18 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.ColorInt
-import kotlin.random.Random
+import com.example.letsgo.utilities.shapes.Circle
+import com.example.letsgo.utilities.shapes.Shape
 
-class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
+class CounterView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     @ColorInt
     private val setsPaintColor:Int = Color.rgb( 223, 34, 34)
     private val setsPaintColorTransparent = Color.argb(0, 223, 34, 34)
-    private val minSetsRadius = 200f
-    private val maxSetsRadius = 500f
 
-    private lateinit var extraCanvas: Canvas
-    private lateinit var extraBitmap: Bitmap
+    private lateinit var canvas: Canvas
+    private lateinit var bitmap: Bitmap
+
+    private val shapeDrawer: Shape = Circle(setsPaintColor, setsPaintColorTransparent, 200, 500)
 
     private val pointPaint = Paint(ANTI_ALIAS_FLAG).apply {
         color = setsPaintColor
@@ -27,15 +28,15 @@ class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        canvas.drawBitmap(extraBitmap, 0f, 0f, null)
+        canvas.drawBitmap(bitmap, 0f, 0f, null)
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        if (::extraBitmap.isInitialized) extraBitmap.recycle() // we'll create a new bitmap each time this is called so this will fix the memory leak of extra bitmaps
+        if (::bitmap.isInitialized) bitmap.recycle() // we'll create a new bitmap each time this is called so this will fix the memory leak of extra bitmaps
 
-        extraBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
-        extraCanvas = Canvas(extraBitmap)
+        bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+        canvas = Canvas(bitmap)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
@@ -45,10 +46,11 @@ class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
 
-                val radius: Float = Random.nextInt(minSetsRadius.toInt(), maxSetsRadius.toInt()).toFloat()
-                pointPaint.shader = RadialGradient(x, y, radius, setsPaintColor, setsPaintColorTransparent, Shader.TileMode.CLAMP)
-                extraCanvas.drawCircle(x, y, radius, pointPaint)
-                println("x: $x, y: $y")
+                shapeDrawer.draw(canvas, x, y, 5, 5)
+                //val radius: Float = Random.nextInt(minSetsRadius.toInt(), maxSetsRadius.toInt()).toFloat()
+                //pointPaint.shader = RadialGradient(x, y, radius, setsPaintColor, setsPaintColorTransparent, Shader.TileMode.CLAMP)
+                //extraCanvas.drawCircle(x, y, radius, pointPaint)
+                //println("x: $x, y: $y")
                 invalidate()
             }
         }

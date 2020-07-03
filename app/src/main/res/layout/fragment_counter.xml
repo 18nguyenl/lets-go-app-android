@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".CounterFragment">
 
-    <com.example.letsgo.views.CounterCanvas
+    <com.example.letsgo.views.CounterView
         android:id="@+id/counterCanvas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
