@@ -1,30 +1,18 @@
 package com.example.letsgo.viewmodels
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.sqlite.db.SimpleSQLiteQuery
 import com.example.letsgo.models.Task
 import com.example.letsgo.data.TaskDao
-import com.example.letsgo.models.Hashtag
-import com.example.letsgo.utilities.HashtagUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CreateTaskViewModel(
     private val taskDao: TaskDao
-    //private val hashtagDao: DataAccessObject<Hashtag>
 )  : ViewModel() {
 
 
     private fun insertTask(vararg element: Task) = viewModelScope.launch(Dispatchers.IO) { taskDao.insert(*element) }
-
-//    private fun insertHashtag(vararg element: Hashtag) = viewModelScope.launch(Dispatchers.IO) { hashtagDao.insert(*element) }
-//    private fun updateHashtag(vararg element: Hashtag) = viewModelScope.launch(Dispatchers.IO) { hashtagDao.update(*element) }
-//    private fun fetchHashtagByID(id: Int) : LiveData<@JvmSuppressWildcards Hashtag> = hashtagDao.fetchByID(id)
-//    private fun fetchHashtagByName(name: String) : LiveData<@JvmSuppressWildcards Hashtag> = hashtagDao.fetchByQuery(
-//        SimpleSQLiteQuery("SELECT * FROM ${Hashtag.hashtagTable} WHERE name = $name")
-//    )
 
     fun createTask(
         sets: Int,

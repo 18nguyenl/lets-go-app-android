@@ -12,15 +12,13 @@ object InjectorUtils {
 
     private fun getTaskRepository(context: Context) = AppDatabase.getDatabase(context.applicationContext).taskDao()
 
-    private fun getHashtagRepository(context: Context) = AppDatabase.getDatabase(context.applicationContext).hashtagDao()
-
     // ALL VIEWMODELS REQUIRE APPLICATION CONTEXT
 
     // counter VM requires the ID of the task being performed
     fun provideCounterViewModelFactory(
         context: Context,
         id: Int
-    ) = CounterViewModelFactory(id, getTaskRepository(context), getHashtagRepository(context))
+    ) = CounterViewModelFactory(id, getTaskRepository(context))
 
     // create task VM has no other requirements
     fun provideCreateTaskModelFactory(

@@ -3,14 +3,12 @@ package com.example.letsgo.models
 import android.graphics.Point
 
 class Counter(
-    val task: Task,
-    hashtagName: String
+    val task: Task
 ) {
 
     val points = ArrayList<Point>()
     val intensity = "${task.intensity} ${task.unit}"
     val volume = "${task.sets}×${task.reps}"
-    val hashtag = "#$hashtagName"
 
     private var setProgress = 0
 
@@ -25,9 +23,6 @@ class Counter(
             // add point and increment reps
             points.add(point)
             setProgress
-
         }
-
     }
-
 }
