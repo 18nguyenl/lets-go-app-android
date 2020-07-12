@@ -114,7 +114,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/createTaskTitleText" />
 
                 <EditText
-                    android:id="@+id/tagText"
+                    android:id="@+id/createTagInputText"
                     style="@style/Base.Widget.MaterialComponents.TextInputEditText"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/input_height_md"
@@ -123,7 +123,7 @@
                     android:layout_marginEnd="@dimen/margin_lg"
                     android:background="@drawable/box_drawable"
                     android:drawablePadding="0dp"
-                    android:gravity="center"
+                    android:gravity="start|center_vertical"
                     android:includeFontPadding="false"
                     android:inputType="text"
                     android:padding="0dp"
@@ -133,7 +133,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/createTagInputText" />
+                    app:layout_constraintTop_toBottomOf="@+id/createTagTitleText" />
 
                 <EditText
                     android:id="@+id/createUnitInputText"
@@ -161,7 +161,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/createIntensityTitleText" />
 
                 <TextView
-                    android:id="@+id/createTagInputText"
+                    android:id="@+id/createTagTitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_lg"
@@ -180,7 +180,7 @@
                     android:text="@string/create_task_intensity_input_title"
                     android:textAppearance="@style/TextAppearance.Subtitle"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tagText" />
+                    app:layout_constraintTop_toBottomOf="@+id/createTagInputText" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

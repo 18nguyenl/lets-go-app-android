@@ -13,6 +13,7 @@
         <item name="android:textSize">@dimen/subtitle</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/normal_text_color</item>
+        <item name="android:textAlignment">viewStart</item>
     </style>
 
     <style name="TextAppearance.Paragraph" parent="TextAppearance.AppCompat.Body1">
@@ -20,6 +21,7 @@
         <item name="android:textSize">@dimen/paragraph</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/normal_text_color</item>
+        <item name="android:textAlignment">viewStart</item>
     </style>
 
     <style name="TextAppearance.Input" parent="TextAppearance.AppCompat.Title">
