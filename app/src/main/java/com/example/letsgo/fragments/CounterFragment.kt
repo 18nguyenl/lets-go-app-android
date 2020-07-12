@@ -1,4 +1,4 @@
-package com.example.letsgo
+package com.example.letsgo.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,9 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import com.example.letsgo.R
 import com.example.letsgo.models.Task
 import com.example.letsgo.utilities.InjectorUtils
-import com.example.letsgo.viewmodels.TaskViewModel
+import com.example.letsgo.viewmodels.CounterViewModel
 import kotlinx.android.synthetic.main.counter_actionbar_title.view.*
 import kotlinx.android.synthetic.main.fragment_counter.view.*
 
@@ -19,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_counter.view.*
  * A simple [Fragment] subclass.
  */
 class CounterFragment : Fragment() {
-    private val model: TaskViewModel by activityViewModels { InjectorUtils.provideTaskViewModelFactory(requireActivity()) }
+    private val model: CounterViewModel by activityViewModels { InjectorUtils.provideCounterViewModelFactory(requireActivity()) }
 
     private var currentSet = 0
     private var selectedTask: Task = Task(0, 0, "", 0, "")
@@ -35,17 +36,12 @@ class CounterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        model.selectedTask.observe(viewLifecycleOwner, Observer { task ->
-            task?.let {
-                selectedTask = it
-                view.counterTitleText.text = "${currentSet} of ${selectedTask.sets}"
-            }
-        })
+        view.counterTitleText.text = model.counter.progress()
 
         view.setOnClickListener { view ->
             if (currentSet < selectedTask.sets) {
-                currentSet++
-                view.counterTitleText.text = "${currentSet} of ${selectedTask.sets}"
+                model.incrementCounter()
+                view.counterTitleText.text = model.counter.progress()
             } else {
                 view.findNavController().popBackStack()
             }

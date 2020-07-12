@@ -17,8 +17,8 @@ class CounterViewModel(
         counter = Counter(task.value!!)
     }
 
-    fun incrementCounter(point: Point){
-        counter.increment(point)
+    fun incrementCounter(){
+        counter.increment()
     }
 
 }

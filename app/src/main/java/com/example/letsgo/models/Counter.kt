@@ -1,12 +1,9 @@
 package com.example.letsgo.models
 
-import android.graphics.Point
-
 class Counter(
     val task: Task
 ) {
 
-    val points = ArrayList<Point>()
     val intensity = "${task.intensity} ${task.unit}"
     val volume = "${task.sets}×${task.reps}"
 
@@ -15,14 +12,11 @@ class Counter(
     fun progress() = "$setProgress of ${task.sets}"
     fun isInProgress() = setProgress < task.sets
 
-    fun increment(point: Point){
+    fun increment(){
 
         // if counter can still count
         if(isInProgress()){
-
-            // add point and increment reps
-            points.add(point)
-            setProgress
+            // TODO: Add bitmap tracking progress here
         }
     }
 }

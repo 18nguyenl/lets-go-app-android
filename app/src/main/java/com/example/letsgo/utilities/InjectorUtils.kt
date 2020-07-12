@@ -1,9 +1,7 @@
 package com.example.letsgo.utilities
 
 import android.content.Context
-import com.example.letsgo.models.Task
 import com.example.letsgo.data.AppDatabase
-import com.example.letsgo.data.DataAccessObject
 import com.example.letsgo.viewmodels.CounterViewModelFactory
 import com.example.letsgo.viewmodels.CreateTaskViewModelFactory
 import com.example.letsgo.viewmodels.TaskListViewModelFactory
@@ -21,7 +19,7 @@ object InjectorUtils {
     ) = CounterViewModelFactory(id, getTaskRepository(context))
 
     // create task VM has no other requirements
-    fun provideCreateTaskModelFactory(
+    fun provideCreateTaskViewModelFactory(
         context: Context
     ) = CreateTaskViewModelFactory(getTaskRepository(context))
 
