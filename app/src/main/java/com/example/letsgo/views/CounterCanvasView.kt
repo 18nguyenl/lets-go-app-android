@@ -20,15 +20,12 @@ class CounterCanvasView(context: Context, attrs: AttributeSet) : View(context, a
     @ColorInt
     private val setsPaintColor:Int = Color.rgb( 223, 34, 34)
     private val setsPaintColorTransparent = Color.argb(0, 223, 34, 34)
+    private val minRadius = 200
+    private val maxRadius = 500
+    private val shapeDrawer: ShapeDrawer = CircleDrawer(setsPaintColor, setsPaintColorTransparent, minRadius, maxRadius)
 
     private lateinit var canvas: Canvas
     private lateinit var bitmap: Bitmap
-    private val shapeDrawer: ShapeDrawer = CircleDrawer(setsPaintColor, setsPaintColorTransparent, 200, 500)
-
-    private val pointPaint = Paint(ANTI_ALIAS_FLAG).apply {
-        color = setsPaintColor
-        style = Paint.Style.FILL
-    }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
