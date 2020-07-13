@@ -31,6 +31,8 @@ object InjectorUtils {
     ) = TaskListViewModelFactory(getTaskRepository(context), ids)
 
     // temporary provider that directly passes all the task IDs to the task list viewmodel
+    // We have to use runBlocking here because all Dao functions must be run in a separate thread or coroutine
+    // To make sure a Coroutine executes and ends, we use runBlocking
     fun provideAllTasksViewModelFactory(
         context: Context
     ) = TaskListViewModelFactory(getTaskRepository(context), runBlocking { getTaskRepository(context).getAllIDsSynchronously().toIntArray() })

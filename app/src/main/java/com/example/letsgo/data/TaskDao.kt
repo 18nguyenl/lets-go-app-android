@@ -26,6 +26,16 @@ interface TaskDao : DataAccessObject<Task> {
    @Query("SELECT id FROM ${Task.taskTable}")
    fun getAllIDs(): LiveData<List<Int>>
 
+   // Temporarily here for Views
+   // Because of the runBlocking thing in InjectorUtils, getAllIDs is only called once and won't update
+   // the list of IDs in the future. I think it's possible to switch this into using getAllIDs to fetch the IDs, but
+   // we'd need to get rid of the LiveData part of it. There's also some Coroutine concerns I think.
+   @Query("SELECT * FROM ${Task.taskTable}")
+   fun getAllTasks(): LiveData<List<@JvmSuppressWildcards Task>>
+
+   // Because we need somethings to be accessed directly, and LiveData doesn't have any tooling to fetch data directly,
+   // We need to make our own helper methods that lets us do this
+   // LiveData.value will always be null at initialization basically so we have to do it this way from what I know
    @Query("SELECT id FROM ${Task.taskTable}")
    suspend fun getAllIDsSynchronously(): List<Int>
 
