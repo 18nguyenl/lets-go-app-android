@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_counter.view.*
  * A simple [Fragment] subclass.
  */
 class CounterFragment : Fragment() {
-    private val model: CounterViewModel by activityViewModels { InjectorUtils.provideCounterViewModelFactory(requireActivity()) }
+    private val model: CounterViewModel by activityViewModels { InjectorUtils.provideAllTasksViewModelFactory(requireActivity()) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

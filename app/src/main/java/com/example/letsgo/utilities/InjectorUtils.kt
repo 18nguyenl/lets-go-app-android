@@ -29,6 +29,7 @@ object InjectorUtils {
         ids: IntArray
     ) = TaskListViewModelFactory(getTaskRepository(context), ids)
 
+    // temporary provider that directly passes all the task IDs to the task list viewmodel
     fun provideAllTasksViewModelFactory(
         context: Context
     ) = TaskListViewModelFactory(getTaskRepository(context), getTaskRepository(context).getAllIDs().value?.toIntArray())
