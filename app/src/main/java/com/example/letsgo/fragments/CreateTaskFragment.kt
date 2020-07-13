@@ -5,10 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.letsgo.databinding.FragmentCreateTaskBinding
-import com.example.letsgo.models.Task
 import com.example.letsgo.utilities.InjectorUtils
 import com.example.letsgo.viewmodels.CreateTaskViewModel
 import kotlinx.android.synthetic.main.fragment_create_task.view.*
@@ -17,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_create_task.view.*
  * A simple [Fragment] subclass.
  */
 class CreateTaskFragment : Fragment() {
-    private val model: CreateTaskViewModel by activityViewModels { InjectorUtils.provideCreateTaskViewModelFactory(requireActivity()) }
+    private val model: CreateTaskViewModel by viewModels { InjectorUtils.provideCreateTaskViewModelFactory(requireActivity()) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

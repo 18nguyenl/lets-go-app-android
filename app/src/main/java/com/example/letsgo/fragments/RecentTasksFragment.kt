@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_recent_tasks.view.*
  */
 class RecentTasksFragment : Fragment() {
 
-    private val model: TaskListViewModel by activityViewModels { InjectorUtils.provideAllTasksViewModelFactory(requireActivity()) }
+    private val model: TaskListViewModel by viewModels { InjectorUtils.provideAllTasksViewModelFactory(requireActivity()) }
 
     // Recycler View components
     private lateinit var recyclerView: RecyclerView

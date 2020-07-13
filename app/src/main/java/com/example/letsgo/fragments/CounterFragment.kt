@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.example.letsgo.R
@@ -23,7 +23,7 @@ class CounterFragment : Fragment() {
 
     // need to pass the task ID from the list view to the counter view
     //      perhaps by using an overarching VM, or some other way
-    private val model: CounterViewModel by activityViewModels { InjectorUtils.provideCounterViewModelFactory(requireActivity()) }
+    private val model: CounterViewModel by viewModels { InjectorUtils.provideCounterViewModelFactory(requireActivity()) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
