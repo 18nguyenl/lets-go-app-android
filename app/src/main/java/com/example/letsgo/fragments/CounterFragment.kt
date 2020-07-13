@@ -22,9 +22,6 @@ import kotlinx.android.synthetic.main.fragment_counter.view.*
 class CounterFragment : Fragment() {
     private val model: CounterViewModel by activityViewModels { InjectorUtils.provideCounterViewModelFactory(requireActivity()) }
 
-    private var currentSet = 0
-    private var selectedTask: Task = Task(0, 0, "", 0, "")
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,7 +36,7 @@ class CounterFragment : Fragment() {
         view.counterTitleText.text = model.counter.progress()
 
         view.setOnClickListener { view ->
-            if (currentSet < selectedTask.sets) {
+            if (model.counter.isInProgress()) {
                 model.incrementCounter()
                 view.counterTitleText.text = model.counter.progress()
             } else {
@@ -69,6 +66,7 @@ class CounterFragment : Fragment() {
 
         val counterToolbarView = layoutInflater.inflate(R.layout.counter_actionbar_title, null)
 
+        val selectedTask = model.counter.task
         counterToolbarView.counter_intensity_unit_text.text = "${selectedTask.intensity} ${selectedTask.unit}"
         counterToolbarView.counter_sets_reps_text.text = "${selectedTask.sets} × ${selectedTask.reps}"
         counterToolbarView.counter_tag_text.text = "#${selectedTask.tag}"

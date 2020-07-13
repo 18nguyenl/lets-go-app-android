@@ -54,7 +54,6 @@ class RecentTasksFragment : Fragment() {
             adapter = viewAdapter
         }
 
-        // REVIEW: wtf is `ViewLifecycleOwner`, is `Observer` an iterator? wtf is `it`?
         // Observe changes for the Tasks in the database
         model.tasks.observe(viewLifecycleOwner, Observer { tasks ->
             tasks?.let { viewAdapter.setTasks(it) }
