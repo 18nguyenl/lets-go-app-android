@@ -5,7 +5,8 @@ class Counter(
 ) {
 
     val intensity = "${task.intensity} ${task.unit}"
-    val volume = "${task.sets}×${task.reps}"
+    val volume = "${task.sets} × ${task.reps}"
+    val hashtag = "#${task.tag}"
 
     private var setProgress = 0
 

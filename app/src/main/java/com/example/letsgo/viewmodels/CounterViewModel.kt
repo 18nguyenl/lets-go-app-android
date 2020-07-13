@@ -12,9 +12,10 @@ class CounterViewModel(
 
     val counter: Counter
 
+
     init{
         val task = taskDao.fetchByID(taskID)
-        counter = Counter(task.value!!)
+        counter = Counter(task.value!!)     // is this what we should do for a livedata object??????
     }
 
     fun incrementCounter(){

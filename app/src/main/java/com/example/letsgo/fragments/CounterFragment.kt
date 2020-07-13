@@ -69,10 +69,10 @@ class CounterFragment : Fragment() {
 
         val counterToolbarView = layoutInflater.inflate(R.layout.counter_actionbar_title, null)
 
-        val selectedTask = model.counter.task
-        counterToolbarView.counter_intensity_unit_text.text = "${selectedTask.intensity} ${selectedTask.unit}"
-        counterToolbarView.counter_sets_reps_text.text = "${selectedTask.sets} × ${selectedTask.reps}"
-        counterToolbarView.counter_tag_text.text = "#${selectedTask.tag}"
+        val selectedTask = model.counter
+        counterToolbarView.counter_intensity_unit_text.text = selectedTask.intensity
+        counterToolbarView.counter_sets_reps_text.text = selectedTask.volume
+        counterToolbarView.counter_tag_text.text = selectedTask.hashtag
 
         toolbar?.customView = counterToolbarView
     }
