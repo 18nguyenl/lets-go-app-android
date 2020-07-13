@@ -20,7 +20,10 @@ import kotlinx.android.synthetic.main.fragment_counter.view.*
  * A simple [Fragment] subclass.
  */
 class CounterFragment : Fragment() {
-    private val model: CounterViewModel by activityViewModels { InjectorUtils.provideAllTasksViewModelFactory(requireActivity()) }
+
+    // need to pass the task ID from the list view to the counter view
+    //      perhaps by using an overarching VM, or some other way
+    private val model: CounterViewModel by activityViewModels { InjectorUtils.provideCounterViewModelFactory(requireActivity()) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

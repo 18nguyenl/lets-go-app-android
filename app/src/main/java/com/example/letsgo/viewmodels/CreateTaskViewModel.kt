@@ -18,11 +18,12 @@ class CreateTaskViewModel(
         sets: Int,
         reps: Int,
         intensity: Int,
-        unit: String
+        unit: String,
+        tag: String
     ) : Task {
 
         // instantiate task and insert into task database
-        val creation = Task(sets, reps, "", intensity, unit)
+        val creation = Task(sets, reps, intensity, unit, tag)
         insertTask(creation)
 
         return creation
