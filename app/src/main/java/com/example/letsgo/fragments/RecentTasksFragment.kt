@@ -38,7 +38,7 @@ class RecentTasksFragment : Fragment() {
         view.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.action_create -> {
-                    view.findNavController().navigate(R.id.action_fragmentRecentTasks_to_createTaskFragment)
+                    view.findNavController().navigate(R.id.createAction)
                 }
             }
             true

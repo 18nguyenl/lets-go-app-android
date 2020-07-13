@@ -5,6 +5,7 @@ import com.example.letsgo.data.AppDatabase
 import com.example.letsgo.viewmodels.CounterViewModelFactory
 import com.example.letsgo.viewmodels.CreateTaskViewModelFactory
 import com.example.letsgo.viewmodels.TaskListViewModelFactory
+import kotlinx.coroutines.runBlocking
 
 object InjectorUtils {
 
@@ -32,6 +33,6 @@ object InjectorUtils {
     // temporary provider that directly passes all the task IDs to the task list viewmodel
     fun provideAllTasksViewModelFactory(
         context: Context
-    ) = TaskListViewModelFactory(getTaskRepository(context), getTaskRepository(context).getAllIDs().value?.toIntArray())
+    ) = TaskListViewModelFactory(getTaskRepository(context), runBlocking { getTaskRepository(context).getAllIDsSynchronously().toIntArray() })
 
 }

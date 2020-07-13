@@ -7,20 +7,24 @@
 
     <fragment
         android:id="@+id/recentTasksFragment"
-        android:name="com.example.letsgo.RecentTasksFragment"
+        android:name="com.example.letsgo.fragments.RecentTasksFragment"
         tools:layout="@layout/fragment_recent_tasks" >
         <action
-            android:id="@+id/action_fragmentRecentTasks_to_createTaskFragment"
+            android:id="@+id/createAction"
             app:destination="@id/createTaskFragment" />
         <action
-            android:id="@+id/action_fragmentRecentTasks_to_counterFragment"
+            android:id="@+id/counterAction"
             app:destination="@id/counterFragment" />
     </fragment>
     <fragment
         android:id="@+id/createTaskFragment"
-        android:name="com.example.letsgo.CreateTaskFragment" />
+        android:name="com.example.letsgo.fragments.CreateTaskFragment" />
     <fragment
         android:id="@+id/counterFragment"
-        android:name="com.example.letsgo.CounterFragment"
-        tools:layout="@layout/fragment_counter" />
+        android:name="com.example.letsgo.fragments.CounterFragment"
+        tools:layout="@layout/fragment_counter" >
+        <argument
+            android:name="taskID"
+            app:argType="integer" />
+    </fragment>
 </navigation>

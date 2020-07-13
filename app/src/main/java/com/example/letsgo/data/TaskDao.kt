@@ -1,7 +1,8 @@
 package com.example.letsgo.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Query
 import com.example.letsgo.models.Task
 
 @Dao
@@ -25,4 +26,6 @@ interface TaskDao : DataAccessObject<Task> {
    @Query("SELECT id FROM ${Task.taskTable}")
    fun getAllIDs(): LiveData<List<Int>>
 
+   @Query("SELECT id FROM ${Task.taskTable}")
+   suspend fun getAllIDsSynchronously(): List<@JvmSuppressWildcards Int>
 }

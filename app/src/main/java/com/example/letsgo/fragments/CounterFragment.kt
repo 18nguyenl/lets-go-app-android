@@ -1,16 +1,15 @@
 package com.example.letsgo.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.letsgo.R
-import com.example.letsgo.models.Task
 import com.example.letsgo.utilities.InjectorUtils
 import com.example.letsgo.viewmodels.CounterViewModel
 import kotlinx.android.synthetic.main.counter_actionbar_title.view.*
@@ -23,7 +22,8 @@ class CounterFragment : Fragment() {
 
     // need to pass the task ID from the list view to the counter view
     //      perhaps by using an overarching VM, or some other way
-    private val model: CounterViewModel by viewModels { InjectorUtils.provideCounterViewModelFactory(requireActivity()) }
+    private val args: CounterFragmentArgs by navArgs()
+    private val model: CounterViewModel by viewModels { InjectorUtils.provideCounterViewModelFactory(requireActivity(), args.taskID) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
