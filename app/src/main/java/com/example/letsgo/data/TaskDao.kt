@@ -22,7 +22,7 @@ interface TaskDao : DataAccessObject<Task> {
    //@Query("DELETE FROM ${Task.taskTable} WHERE id = :id")
    //fun deleteByID(id: Int)
 
-   //@Query("SELECT id FROM ${Task.taskTable}")
-   //fun getAllIDs(): LiveData<List<Int>>
+   @Query("SELECT id FROM ${Task.taskTable}")
+   fun getAllIDs(): LiveData<List<Int>>
 
 }
