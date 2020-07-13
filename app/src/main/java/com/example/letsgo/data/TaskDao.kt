@@ -27,5 +27,8 @@ interface TaskDao : DataAccessObject<Task> {
    fun getAllIDs(): LiveData<List<Int>>
 
    @Query("SELECT id FROM ${Task.taskTable}")
-   suspend fun getAllIDsSynchronously(): List<@JvmSuppressWildcards Int>
+   suspend fun getAllIDsSynchronously(): List<Int>
+
+   @Query("SELECT * FROM ${Task.taskTable} WHERE id = :taskID")
+   suspend fun fetchByIDSynchronously(taskID: Int): Task
 }

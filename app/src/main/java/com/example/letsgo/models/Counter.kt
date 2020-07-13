@@ -17,6 +17,8 @@ class Counter(
 
         // if counter can still count
         if(isInProgress()){
+            setProgress++
+
             // TODO: Add bitmap tracking progress here
         }
     }

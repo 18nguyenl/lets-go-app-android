@@ -1,9 +1,9 @@
 package com.example.letsgo.viewmodels
 
-import android.graphics.Point
 import androidx.lifecycle.ViewModel
 import com.example.letsgo.data.TaskDao
 import com.example.letsgo.models.Counter
+import kotlinx.coroutines.runBlocking
 
 class CounterViewModel(
     taskID: Int,
@@ -12,10 +12,9 @@ class CounterViewModel(
 
     val counter: Counter
 
-
     init{
-        val task = taskDao.fetchByID(taskID)
-        counter = Counter(task.value!!)     // is this what we should do for a livedata object??????
+        val task = runBlocking { taskDao.fetchByIDSynchronously(taskID) }
+        counter = Counter(task)
     }
 
     fun incrementCounter(){
