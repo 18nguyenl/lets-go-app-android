@@ -14,4 +14,5 @@ class TaskListViewModel(
     val tasks: LiveData<List<@JvmSuppressWildcards Task>> = dao.getByIDs(ids)
 
     val allTasks: LiveData<List<Task>> = dao.getAllTasks()
+
 }
