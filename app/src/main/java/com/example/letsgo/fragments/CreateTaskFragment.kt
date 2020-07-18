@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_create_task.view.*
  * A simple [Fragment] subclass.
  */
 class CreateTaskFragment : Fragment() {
-    private val model: CreateTaskViewModel by viewModels { InjectorUtils.provideCreateTaskViewModelFactory(requireActivity()) }
+    private val model: CreateTaskViewModel by viewModels { InjectorUtils.provideCreateTaskViewModelFactory(this) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
