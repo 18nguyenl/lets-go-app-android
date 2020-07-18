@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_recent_tasks.view.*
  */
 class RecentTasksFragment : Fragment() {
 
-    private val model: TaskListViewModel by viewModels { InjectorUtils.provideAllTasksViewModelFactory(requireActivity()) }
+    private val model: TaskListViewModel by viewModels { InjectorUtils.provideAllTasksViewModelFactoryONE(requireActivity()) }
 
     // Recycler View components
     private lateinit var recyclerView: RecyclerView
