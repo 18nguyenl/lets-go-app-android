@@ -13,6 +13,6 @@ class TaskListViewModel(
     // This fetches the ids only once. If there are any new IDs, this list won't be updated
     val tasks: LiveData<List<@JvmSuppressWildcards Task>> = dao.getByIDs(ids)
 
-    val allTasks: LiveData<List<Task>> = dao.getAllTasks()
+    //val allTasks: LiveData<List<Task>> = dao.getAllTasks()
 
 }

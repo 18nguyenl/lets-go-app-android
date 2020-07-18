@@ -56,7 +56,7 @@ class RecentTasksFragment : Fragment() {
         }
 
         // Observe changes for the Tasks in the database
-        model.allTasks.observe(viewLifecycleOwner, Observer { tasks ->
+        model.tasks.observe(viewLifecycleOwner, Observer { tasks ->
             tasks?.let { viewAdapter.setTasks(it) }
         })
     }
