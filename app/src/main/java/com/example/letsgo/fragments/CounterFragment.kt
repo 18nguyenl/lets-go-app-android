@@ -12,7 +12,6 @@ import androidx.navigation.fragment.navArgs
 import com.example.letsgo.R
 import com.example.letsgo.utilities.InjectorUtils
 import com.example.letsgo.viewmodels.CounterViewModel
-import kotlinx.android.synthetic.main.counter_actionbar_title.view.*
 import kotlinx.android.synthetic.main.fragment_counter.view.*
 
 /**
@@ -37,6 +36,9 @@ class CounterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.counterTitleText.text = viewModel.counter.progress()
+        view.counter_intensity_unit_text.text = viewModel.counter.intensity
+        view.counter_sets_reps_text.text = viewModel.counter.volume
+        view.counter_tag_text.text = viewModel.counter.hashtag
 
         view.setOnClickListener { view ->
             if (viewModel.counter.isInProgress()) {
