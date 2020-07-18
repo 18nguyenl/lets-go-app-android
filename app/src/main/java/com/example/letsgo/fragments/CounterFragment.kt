@@ -1,11 +1,11 @@
 package com.example.letsgo.fragments
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -51,35 +51,24 @@ class CounterFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        enableCounterToolbar()
+        disableCounterToolbar()
     }
 
     override fun onPause() {
         super.onPause()
 
-        disableCounterToolbar()
+        enableCounterToolbar()
     }
 
     private fun enableCounterToolbar() {
-        // https://stackoverflow.com/questions/33219485/add-and-remove-views-from-toolbar-depending-on-fragment-displayed
         val toolbar = (activity as AppCompatActivity).supportActionBar
-        toolbar?.setDisplayShowTitleEnabled(false)
-        toolbar?.setDisplayShowHomeEnabled(false)
-        toolbar?.setDisplayShowCustomEnabled(true)
 
-        val counterToolbarView = layoutInflater.inflate(R.layout.counter_actionbar_title, null)
-
-        counterToolbarView.counter_intensity_unit_text.text = viewModel.counter.intensity
-        counterToolbarView.counter_sets_reps_text.text = viewModel.counter.volume
-        counterToolbarView.counter_tag_text.text = viewModel.counter.hashtag
-
-        toolbar?.customView = counterToolbarView
+        toolbar?.show()
     }
 
     private fun disableCounterToolbar() {
         val toolbar = (activity as AppCompatActivity).supportActionBar
-        toolbar?.setDisplayShowCustomEnabled(false)
-        toolbar?.setDisplayShowTitleEnabled(true)
-        toolbar?.setDisplayShowHomeEnabled(true)
+
+        toolbar?.hide()
     }
 }
