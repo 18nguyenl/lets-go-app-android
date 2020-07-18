@@ -28,31 +28,7 @@ object InjectorUtils {
 
     // task list VM requires array of IDs of tasks being displayed
     fun provideTaskListViewModelFactory(
-        fragment: Fragment,
-        ids: IntArray
-    ) = TaskListViewModelFactory(getTaskRepository(fragment.requireContext()), ids)
-
-    // temporary provider that directly passes all the task IDs to the task list viewmodel
-    // We have to use runBlocking here because all Dao functions must be run in a separate thread or coroutine
-    // To make sure a Coroutine executes and ends, we use runBlocking
-    fun provideAllTasksViewModelFactoryONE(
         fragment: Fragment
-    ) = provideTaskListViewModelFactory(
-        fragment,
-        runBlocking { getTaskRepository(fragment.requireContext()).getAllIDsSynchronously().toIntArray() }
-    )
-
-    // THE FUNCTION BELOW IS MY ATTEMPT AT USING THE LIVEDATA<LIST<INT>> FUNCTION
-    // EXCEPT NO IDEA HOW TO USE THE OBSERVER THINGY AS PART OF A CONSTRUCTOR
-    // BECAUSE WHERE IS THE RETURN STATEMENT SUPPOSED TO BE???
-
-    // IT COULD BE THAT LIVEDATA SHOULDN'T BE USED LIKE THIS AT ALL,
-    // AND THE FUNCTION ABOVE SHOULD WORK ALL ON ITS OWN THE WAY IT'S INTENDED
-
-    //fun provideAllTasksViewModelFactoryTWO(
-    //    context: Context
-    //) = getTaskRepository(context).getAllIDs().observe(viewLifecycleOwner, Observer { tasks ->
-    //    tasks?.let { TaskListViewModelFactory(getTaskRepository(context), it) }
-    //})
+    ) = TaskListViewModelFactory(getTaskRepository(fragment.requireContext()))
 
 }

@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_recent_tasks.view.*
  */
 class RecentTasksFragment : Fragment() {
 
-    private val viewModel: TaskListViewModel by viewModels { InjectorUtils.provideAllTasksViewModelFactoryONE(this) }
+    private val viewModel: TaskListViewModel by viewModels { InjectorUtils.provideTaskListViewModelFactory(this) }
 
     // Recycler View components
     private lateinit var recyclerView: RecyclerView
@@ -56,7 +56,7 @@ class RecentTasksFragment : Fragment() {
         }
 
         // Observe changes for the Tasks in the database
-        viewModel.tasks.observe(viewLifecycleOwner, Observer { tasks ->
+        viewModel.allTasks.observe(viewLifecycleOwner, Observer { tasks ->
             tasks?.let { viewAdapter.setTasks(it) }
         })
     }
