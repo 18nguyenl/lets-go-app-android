@@ -37,8 +37,8 @@ object InjectorUtils {
     // To make sure a Coroutine executes and ends, we use runBlocking
     fun provideAllTasksViewModelFactoryONE(
         fragment: Fragment
-    ) = TaskListViewModelFactory(
-        getTaskRepository(fragment.requireContext()),
+    ) = provideTaskListViewModelFactory(
+        fragment,
         runBlocking { getTaskRepository(fragment.requireContext()).getAllIDsSynchronously().toIntArray() }
     )
 
