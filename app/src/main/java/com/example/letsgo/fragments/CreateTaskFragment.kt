@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_create_task.view.*
  * A simple [Fragment] subclass.
  */
 class CreateTaskFragment : Fragment() {
-    private val model: CreateTaskViewModel by viewModels { InjectorUtils.provideCreateTaskViewModelFactory(this) }
+    private val viewModel: CreateTaskViewModel by viewModels { InjectorUtils.provideCreateTaskViewModelFactory(this) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +30,7 @@ class CreateTaskFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.floatingActionButton.setOnClickListener { v ->
-            model.createTask(
+            viewModel.createTask(
                 view.createSetInputText.text.toString().toInt(),
                 view.createRepInputText.text.toString().toInt(),
                 view.createIntensityInputText.text.toString().toInt(),

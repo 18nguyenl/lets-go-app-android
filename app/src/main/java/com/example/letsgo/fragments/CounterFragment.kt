@@ -23,7 +23,7 @@ class CounterFragment : Fragment() {
     // need to pass the task ID from the list view to the counter view
     //      perhaps by using an overarching VM, or some other way
     private val args: CounterFragmentArgs by navArgs()
-    private val model: CounterViewModel by viewModels { InjectorUtils.provideCounterViewModelFactory(requireActivity(), args.taskID) }
+    private val viewModel: CounterViewModel by viewModels { InjectorUtils.provideCounterViewModelFactory(this, args.taskID) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,12 +36,12 @@ class CounterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.counterTitleText.text = model.counter.progress()
+        view.counterTitleText.text = viewModel.counter.progress()
 
         view.setOnClickListener { view ->
-            if (model.counter.isInProgress()) {
-                model.incrementCounter()
-                view.counterTitleText.text = model.counter.progress()
+            if (viewModel.counter.isInProgress()) {
+                viewModel.incrementCounter()
+                view.counterTitleText.text = viewModel.counter.progress()
             } else {
                 view.findNavController().popBackStack()
             }
@@ -69,10 +69,9 @@ class CounterFragment : Fragment() {
 
         val counterToolbarView = layoutInflater.inflate(R.layout.counter_actionbar_title, null)
 
-        val selectedTask = model.counter
-        counterToolbarView.counter_intensity_unit_text.text = selectedTask.intensity
-        counterToolbarView.counter_sets_reps_text.text = selectedTask.volume
-        counterToolbarView.counter_tag_text.text = selectedTask.hashtag
+        counterToolbarView.counter_intensity_unit_text.text = viewModel.counter.intensity
+        counterToolbarView.counter_sets_reps_text.text = viewModel.counter.volume
+        counterToolbarView.counter_tag_text.text = viewModel.counter.hashtag
 
         toolbar?.customView = counterToolbarView
     }

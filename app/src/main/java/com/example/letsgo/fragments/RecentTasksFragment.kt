@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_recent_tasks.view.*
  */
 class RecentTasksFragment : Fragment() {
 
-    private val model: TaskListViewModel by viewModels { InjectorUtils.provideAllTasksViewModelFactoryONE(requireActivity()) }
+    private val viewModel: TaskListViewModel by viewModels { InjectorUtils.provideAllTasksViewModelFactoryONE(this) }
 
     // Recycler View components
     private lateinit var recyclerView: RecyclerView
@@ -46,7 +46,7 @@ class RecentTasksFragment : Fragment() {
 
         val viewManager = LinearLayoutManager(activity)
         val viewAdapter = TaskAdapter()
-        viewAdapter.setViewModel(model)
+        viewAdapter.setViewModel(viewModel)
 
         recyclerView = view.findViewById<RecyclerView>(R.id.recentTaskList).apply {
             setHasFixedSize(true)
@@ -56,7 +56,7 @@ class RecentTasksFragment : Fragment() {
         }
 
         // Observe changes for the Tasks in the database
-        model.tasks.observe(viewLifecycleOwner, Observer { tasks ->
+        viewModel.tasks.observe(viewLifecycleOwner, Observer { tasks ->
             tasks?.let { viewAdapter.setTasks(it) }
         })
     }
