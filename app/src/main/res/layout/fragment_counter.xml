@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CounterFragment">
+    tools:context=".fragments.CounterFragment">
 
     <com.example.letsgo.views.CounterCanvas
         android:id="@+id/counterCanvas"
