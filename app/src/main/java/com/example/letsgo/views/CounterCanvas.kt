@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.ColorInt
+import com.example.letsgo.viewmodels.CounterViewModel
 import kotlin.random.Random
 
 class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
@@ -16,26 +17,30 @@ class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs
     private val minSetsRadius = 200f
     private val maxSetsRadius = 500f
 
-    private lateinit var extraCanvas: Canvas
-    private lateinit var extraBitmap: Bitmap
+    private lateinit var viewModel: CounterViewModel
 
     private val pointPaint = Paint(ANTI_ALIAS_FLAG).apply {
         color = setsPaintColor
         style = Paint.Style.FILL
     }
 
+    fun initCanvas(viewModel: CounterViewModel) {
+        this.viewModel = viewModel
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        canvas.drawBitmap(extraBitmap, 0f, 0f, null)
+        canvas.drawBitmap(viewModel.bitmap, 0f, 0f, null)
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        if (::extraBitmap.isInitialized) extraBitmap.recycle() // we'll create a new bitmap each time this is called so this will fix the memory leak of extra bitmaps
 
-        extraBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
-        extraCanvas = Canvas(extraBitmap)
+        if (!viewModel.isBitmapInit())
+            viewModel.bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+
+        viewModel.canvas = Canvas(viewModel.bitmap)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
@@ -47,7 +52,7 @@ class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs
 
                 val radius: Float = Random.nextInt(minSetsRadius.toInt(), maxSetsRadius.toInt()).toFloat()
                 pointPaint.shader = RadialGradient(x, y, radius, setsPaintColor, setsPaintColorTransparent, Shader.TileMode.CLAMP)
-                extraCanvas.drawCircle(x, y, radius, pointPaint)
+                viewModel.canvas.drawCircle(x, y, radius, pointPaint)
                 println("x: $x, y: $y")
                 invalidate()
             }

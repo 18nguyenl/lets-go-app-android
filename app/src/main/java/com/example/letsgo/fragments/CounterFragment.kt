@@ -48,6 +48,9 @@ class CounterFragment : Fragment() {
                 view.findNavController().popBackStack()
             }
         }
+
+        // Pass the viewModel down to the Canvas View Object
+        view.counterCanvas.initCanvas(viewModel)
     }
 
     override fun onResume() {
@@ -56,8 +59,8 @@ class CounterFragment : Fragment() {
         disableCounterToolbar()
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onDestroy() {
+        super.onDestroy()
 
         enableCounterToolbar()
     }
