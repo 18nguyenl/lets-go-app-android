@@ -32,4 +32,5 @@ class Counter(
     fun isBitmapInit(): Boolean {
         return ::bitmap.isInitialized
     }
+
 }

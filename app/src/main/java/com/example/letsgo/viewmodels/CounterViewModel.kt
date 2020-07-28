@@ -23,4 +23,13 @@ class CounterViewModel(
         counter.increment()
     }
 
+    fun updateSize(w: Int, h: Int){
+
+        if (!counter.isBitmapInit())
+            counter.bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+
+        counter.canvas = Canvas(counter.bitmap)
+
+    }
+
 }

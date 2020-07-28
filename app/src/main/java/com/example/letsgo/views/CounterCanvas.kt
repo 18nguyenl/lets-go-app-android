@@ -37,10 +37,7 @@ class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
 
-        if (!viewModel.counter.isBitmapInit())
-            viewModel.counter.bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
-
-        viewModel.counter.canvas = Canvas(viewModel.counter.bitmap)
+        viewModel.updateSize(w, h)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
