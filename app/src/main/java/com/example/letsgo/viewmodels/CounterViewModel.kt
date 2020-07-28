@@ -20,7 +20,10 @@ class CounterViewModel(
     }
 
     fun incrementCounter(){
-        counter.increment()
+
+        if(counter.isInProgress())
+            counter.increment()
+
     }
 
     fun updateSize(w: Int, h: Int){

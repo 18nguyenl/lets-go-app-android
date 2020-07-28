@@ -21,12 +21,8 @@ class Counter(
 
     fun increment(){
 
-        // if counter can still count
-        if(isInProgress()){
-            setProgress++
+        setProgress++
 
-            // TODO: Add bitmap tracking progress here
-        }
     }
 
     fun isBitmapInit(): Boolean {
