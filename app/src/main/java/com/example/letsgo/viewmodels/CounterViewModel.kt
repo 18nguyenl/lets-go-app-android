@@ -13,16 +13,10 @@ class CounterViewModel(
 ) : ViewModel() {
 
     val counter: Counter
-    lateinit var canvas: Canvas
-    lateinit var bitmap: Bitmap
 
     init{
         val task = runBlocking { taskDao.fetchByIDSynchronously(taskID) }
         counter = Counter(task)
-    }
-
-    fun isBitmapInit(): Boolean {
-        return ::bitmap.isInitialized
     }
 
     fun incrementCounter(){

@@ -1,5 +1,8 @@
 package com.example.letsgo.models
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
+
 class Counter(
     val task: Task
 ) {
@@ -7,6 +10,9 @@ class Counter(
     val intensity = "${task.intensity} ${task.unit}"
     val volume = "${task.sets} × ${task.reps}"
     val hashtag = "#${task.tag}"
+
+    lateinit var canvas: Canvas
+    lateinit var bitmap: Bitmap
 
     private var setProgress = 0
 
@@ -21,5 +27,9 @@ class Counter(
 
             // TODO: Add bitmap tracking progress here
         }
+    }
+
+    fun isBitmapInit(): Boolean {
+        return ::bitmap.isInitialized
     }
 }

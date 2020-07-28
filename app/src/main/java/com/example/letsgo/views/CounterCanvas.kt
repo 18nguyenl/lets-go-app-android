@@ -31,16 +31,16 @@ class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        canvas.drawBitmap(viewModel.bitmap, 0f, 0f, null)
+        canvas.drawBitmap(viewModel.counter.bitmap, 0f, 0f, null)
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
 
-        if (!viewModel.isBitmapInit())
-            viewModel.bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+        if (!viewModel.counter.isBitmapInit())
+            viewModel.counter.bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
 
-        viewModel.canvas = Canvas(viewModel.bitmap)
+        viewModel.counter.canvas = Canvas(viewModel.counter.bitmap)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
@@ -52,7 +52,7 @@ class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs
 
                 val radius: Float = Random.nextInt(minSetsRadius.toInt(), maxSetsRadius.toInt()).toFloat()
                 pointPaint.shader = RadialGradient(x, y, radius, setsPaintColor, setsPaintColorTransparent, Shader.TileMode.CLAMP)
-                viewModel.canvas.drawCircle(x, y, radius, pointPaint)
+                viewModel.counter.canvas.drawCircle(x, y, radius, pointPaint)
                 println("x: $x, y: $y")
                 invalidate()
             }
