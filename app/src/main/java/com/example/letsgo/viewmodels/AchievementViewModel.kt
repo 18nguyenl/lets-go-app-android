@@ -22,7 +22,7 @@ class AchievementViewModel(
             Color.rgb( 223, 34, 34),
             Color.argb(0, 223, 34, 34)
         )    // WE WANT TO INSERT THIS INTO A DATABASE
-
+        achievementDao.insert(achievement)
 
     }
 
