@@ -11,7 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.letsgo.R
 import com.example.letsgo.utilities.InjectorUtils
-import com.example.letsgo.viewmodels.CounterViewModel
+import com.example.letsgo.viewmodels.AchievementViewModel
 import kotlinx.android.synthetic.main.fragment_counter.view.*
 
 /**
@@ -22,7 +22,7 @@ class CounterFragment : Fragment() {
     // need to pass the task ID from the list view to the counter view
     //      perhaps by using an overarching VM, or some other way
     private val args: CounterFragmentArgs by navArgs()
-    private val viewModel: CounterViewModel by viewModels { InjectorUtils.provideCounterViewModelFactory(this, args.taskID) }
+    private val viewModel: AchievementViewModel by viewModels { InjectorUtils.provideAchivementViewModelFactory(this, args.taskID) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,15 +35,15 @@ class CounterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.counterTitleText.text = viewModel.counter.progress()
-        view.counter_intensity_unit_text.text = viewModel.counter.intensityInUnits
-        view.counter_sets_reps_text.text = viewModel.counter.volume
-        view.counter_tag_text.text = viewModel.counter.hashtag
+        view.counterTitleText.text = viewModel.achievement.progress()
+        view.counter_intensity_unit_text.text = viewModel.achievement.intensityInUnits
+        view.counter_sets_reps_text.text = viewModel.achievement.volume
+        view.counter_tag_text.text = viewModel.achievement.hashtag
 
         view.setOnClickListener { view ->
-            if (viewModel.counter.isInProgress()) {
+            if (viewModel.achievement.isInProgress()) {
                 viewModel.increment()
-                view.counterTitleText.text = viewModel.counter.progress()
+                view.counterTitleText.text = viewModel.achievement.progress()
             } else {
                 view.findNavController().popBackStack()
             }

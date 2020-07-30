@@ -3,11 +3,9 @@ package com.example.letsgo.utilities
 import android.content.Context
 import androidx.fragment.app.Fragment
 import com.example.letsgo.data.AppDatabase
-import com.example.letsgo.viewmodels.CounterViewModelFactory
+import com.example.letsgo.viewmodels.AchievementViewModelFactory
 import com.example.letsgo.viewmodels.CreateTaskViewModelFactory
 import com.example.letsgo.viewmodels.TaskListViewModelFactory
-import kotlinx.coroutines.runBlocking
-import java.util.Observer
 
 object InjectorUtils {
 
@@ -16,10 +14,10 @@ object InjectorUtils {
     // ALL VIEWMODELS REQUIRE APPLICATION CONTEXT
 
     // counter VM requires the ID of the task being performed
-    fun provideCounterViewModelFactory(
+    fun provideAchivementViewModelFactory(
         fragment: Fragment,
         id: Int
-    ) = CounterViewModelFactory(id, getTaskRepository(fragment.requireContext()))
+    ) = AchievementViewModelFactory(id, getTaskRepository(fragment.requireContext()))
 
     // create task VM has no other requirements
     fun provideCreateTaskViewModelFactory(

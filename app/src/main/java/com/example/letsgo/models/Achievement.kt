@@ -1,14 +1,13 @@
 package com.example.letsgo.models
 
 import android.graphics.*
-import androidx.annotation.ColorInt
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlin.random.Random
 
-@Entity(tableName = Counter.counterTable)
-class Counter(
+@Entity(tableName = Achievement.counterTable)
+class Achievement(
     @ColumnInfo(name = "sets") private val sets: Int,
     @ColumnInfo(name = "reps") private val reps: Int,
     @ColumnInfo(name = "intensity") private val intensity: Int,

@@ -5,20 +5,20 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import com.example.letsgo.viewmodels.CounterViewModel
+import com.example.letsgo.viewmodels.AchievementViewModel
 
-class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
+class AchievementCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
-    private lateinit var viewModel: CounterViewModel
+    private lateinit var viewModel: AchievementViewModel
 
-    fun initCanvas(viewModel: CounterViewModel) {
+    fun initCanvas(viewModel: AchievementViewModel) {
         this.viewModel = viewModel
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        canvas.drawBitmap(viewModel.counter.bitmap, 0f, 0f, null)
+        canvas.drawBitmap(viewModel.achievement.bitmap, 0f, 0f, null)
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
