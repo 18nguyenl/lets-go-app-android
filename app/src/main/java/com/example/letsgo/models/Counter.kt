@@ -43,11 +43,10 @@ class Counter(
         return ::bitmap.isInitialized
     }
 
-    fun placeCircle(x: Float, y: Float, rad: Float){
+    fun drawCircle(x: Float, y: Float, rad: Float){
 
         pointPaint.shader = RadialGradient(x, y, rad, setsPaintColor, setsPaintColorTransparent, Shader.TileMode.CLAMP)
         canvas.drawCircle(x, y, rad, pointPaint)
-        println("x: $x, y: $y")
 
     }
 

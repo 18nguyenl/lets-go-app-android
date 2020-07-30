@@ -2,13 +2,10 @@ package com.example.letsgo.views
 
 import android.content.Context
 import android.graphics.*
-import android.graphics.Paint.ANTI_ALIAS_FLAG
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import androidx.annotation.ColorInt
 import com.example.letsgo.viewmodels.CounterViewModel
-import kotlin.random.Random
 
 class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
@@ -37,8 +34,9 @@ class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs
 
                 val x = event.x
                 val y = event.y
+                println("x: $x, y: $y")
                 val rad = viewModel.counter.getRandomRadius()
-                viewModel.counter.placeCircle(x, y, rad)
+                viewModel.counter.drawCircle(x, y, rad)
 
                 // save x and y as part of arraylist so data can persist
 
