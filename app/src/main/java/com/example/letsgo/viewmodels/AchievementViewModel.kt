@@ -8,8 +8,12 @@ import com.example.letsgo.models.Achievement
 import kotlinx.coroutines.runBlocking
 
 class AchievementViewModel(
+
+    // WE WANT TO GET RID OF REFERENCES TO TASK AND TASKDAO EVENTUALLY
     taskID: Int,
     taskDao: TaskDao,
+
+    // SO THAT WE CAN PULL THE ACHIEVEMENT FROM ACHIEVEMENTDAO ALREADY FULLY FORMED
     private val achievementDao: AchievementDao
 ) : ViewModel() {
 
@@ -17,6 +21,8 @@ class AchievementViewModel(
 
     init{
 
+        // WE SHOULD INSTANTIATE THE ACHIEVEMENT SOMEWHERE ELSE, NOT HERE
+        //      SO THAT WE CAN USE THE SAME VIEWMODEL TO OPEN EXISTING ACHIEVEMENTS
         val task = runBlocking { taskDao.fetchByIDSynchronously(taskID) }
         achievement = Achievement(task.sets, task.reps, task.intensity, task.unit, task.tag,
             Color.rgb( 223, 34, 34),
