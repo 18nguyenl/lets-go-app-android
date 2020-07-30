@@ -41,20 +41,29 @@ class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        val x: Float = event.x
-        val y: Float = event.y
 
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
 
-                val radius: Float = Random.nextInt(minSetsRadius.toInt(), maxSetsRadius.toInt()).toFloat()
-                pointPaint.shader = RadialGradient(x, y, radius, setsPaintColor, setsPaintColorTransparent, Shader.TileMode.CLAMP)
-                viewModel.counter.canvas.drawCircle(x, y, radius, pointPaint)
-                println("x: $x, y: $y")
-                invalidate()
+                x = event.x
+                y = event.y
+                tapCanvas(x, y)
+
+                // save x and y as part of arraylist so data can persist
+
             }
         }
 
         return super.onTouchEvent(event) // event bubbling / propagation
+    }
+
+    private fun tapCanvas(x: Float, y: Float){
+
+        val radius: Float = Random.nextInt(minSetsRadius.toInt(), maxSetsRadius.toInt()).toFloat()
+        pointPaint.shader = RadialGradient(x, y, radius, setsPaintColor, setsPaintColorTransparent, Shader.TileMode.CLAMP)
+        viewModel.counter.canvas.drawCircle(x, y, radius, pointPaint)
+        println("x: $x, y: $y")
+        invalidate()
+
     }
 }
