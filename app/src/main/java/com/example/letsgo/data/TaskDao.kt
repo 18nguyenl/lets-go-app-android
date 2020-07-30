@@ -8,11 +8,11 @@ import com.example.letsgo.models.Task
 @Dao
 interface TaskDao : DataAccessObject<Task> {
 
-   @Query("SELECT * FROM ${Task.tableName} WHERE id IN (:taskIDs)")
-   fun getByIDs(taskIDs: IntArray): LiveData<List<Task>>
+   @Query("SELECT * FROM ${Task.tableName} WHERE id IN (:ids)")
+   fun getByIDs(ids: IntArray): LiveData<List<Task>>
 
-   @Query("SELECT * FROM ${Task.tableName} WHERE id = :taskID")
-   fun fetchByID(taskID: Int): LiveData<Task>
+   @Query("SELECT * FROM ${Task.tableName} WHERE id = :id")
+   fun fetchByID(id: Int): LiveData<Task>
 
    //@RawQuery(observedEntities = [Task::class])
    //fun getByQuery(query: SimpleSQLiteQuery): LiveData<List<@JvmSuppressWildcards Task>>
