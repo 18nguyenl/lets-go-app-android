@@ -10,6 +10,7 @@ import com.example.letsgo.viewmodels.TaskListViewModelFactory
 object InjectorUtils {
 
     private fun getTaskRepository(context: Context) = AppDatabase.getDatabase(context.applicationContext).taskDao()
+    private fun getAchievementRepository(context: Context) = AppDatabase.getDatabase(context.applicationContext).achievementDao()
 
     // ALL VIEWMODELS REQUIRE APPLICATION CONTEXT
 
