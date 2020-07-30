@@ -11,18 +11,8 @@ import com.example.letsgo.viewmodels.CounterViewModel
 import kotlin.random.Random
 
 class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
-    @ColorInt
-    private val setsPaintColor:Int = Color.rgb( 223, 34, 34)
-    private val setsPaintColorTransparent = Color.argb(0, 223, 34, 34)
-    private val minSetsRadius = 200f
-    private val maxSetsRadius = 500f
 
     private lateinit var viewModel: CounterViewModel
-
-    private val pointPaint = Paint(ANTI_ALIAS_FLAG).apply {
-        color = setsPaintColor
-        style = Paint.Style.FILL
-    }
 
     fun initCanvas(viewModel: CounterViewModel) {
         this.viewModel = viewModel
@@ -45,25 +35,20 @@ class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
 
-                x = event.x
-                y = event.y
-                tapCanvas(x, y)
+                val x = event.x
+                val y = event.y
+                val rad = viewModel.counter.getRandomRadius()
+                viewModel.counter.placeCircle(x, y, rad)
 
                 // save x and y as part of arraylist so data can persist
+
+
+                // tell view to update its canvas
+                invalidate()
 
             }
         }
 
         return super.onTouchEvent(event) // event bubbling / propagation
-    }
-
-    private fun tapCanvas(x: Float, y: Float){
-
-        val radius: Float = Random.nextInt(minSetsRadius.toInt(), maxSetsRadius.toInt()).toFloat()
-        pointPaint.shader = RadialGradient(x, y, radius, setsPaintColor, setsPaintColorTransparent, Shader.TileMode.CLAMP)
-        viewModel.counter.canvas.drawCircle(x, y, radius, pointPaint)
-        println("x: $x, y: $y")
-        invalidate()
-
     }
 }

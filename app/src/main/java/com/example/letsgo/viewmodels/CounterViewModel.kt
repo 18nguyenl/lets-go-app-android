@@ -1,11 +1,12 @@
 package com.example.letsgo.viewmodels
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
+import android.graphics.*
+import androidx.annotation.ColorInt
 import androidx.lifecycle.ViewModel
 import com.example.letsgo.data.TaskDao
 import com.example.letsgo.models.Counter
 import kotlinx.coroutines.runBlocking
+import kotlin.random.Random
 
 class CounterViewModel(
     taskID: Int,
