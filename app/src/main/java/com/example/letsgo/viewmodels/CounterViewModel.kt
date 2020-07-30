@@ -42,4 +42,11 @@ class CounterViewModel(
 
     }
 
+    fun drawCircle(x: Float, y: Float){
+
+        val rad = counter.getRandomRadius()
+        counter.drawCircle(x, y, rad)
+
+    }
+
 }

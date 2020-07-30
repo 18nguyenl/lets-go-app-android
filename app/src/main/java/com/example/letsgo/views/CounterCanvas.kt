@@ -35,11 +35,7 @@ class CounterCanvas(context: Context, attrs: AttributeSet) : View(context, attrs
                 val x = event.x
                 val y = event.y
                 println("x: $x, y: $y")
-                val rad = viewModel.counter.getRandomRadius()
-                viewModel.counter.drawCircle(x, y, rad)
-
-                // save x and y as part of arraylist so data can persist
-
+                viewModel.drawCircle(x, y)
 
                 // tell view to update its canvas
                 invalidate()
