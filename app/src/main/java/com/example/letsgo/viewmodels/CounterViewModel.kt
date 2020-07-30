@@ -2,6 +2,7 @@ package com.example.letsgo.viewmodels
 
 import android.graphics.*
 import androidx.annotation.ColorInt
+import androidx.core.graphics.toColor
 import androidx.lifecycle.ViewModel
 import com.example.letsgo.data.TaskDao
 import com.example.letsgo.models.Counter
@@ -18,7 +19,10 @@ class CounterViewModel(
     init{
 
         val task = runBlocking { taskDao.fetchByIDSynchronously(taskID) }
-        counter = Counter(task.sets, task.reps, task.intensity, task.unit, task.tag)    // WE WANT TO INSERT THIS INTO A DATABASE
+        counter = Counter(task.sets, task.reps, task.intensity, task.unit, task.tag,
+            Color.rgb( 223, 34, 34),
+            Color.argb(0, 223, 34, 34)
+        )    // WE WANT TO INSERT THIS INTO A DATABASE
 
     }
 
