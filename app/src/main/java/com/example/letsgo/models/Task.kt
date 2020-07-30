@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = Task.taskTable)
+@Entity(tableName = Task.tableName)
 data class Task(
     @ColumnInfo(name = "sets") val sets: Int,
     @ColumnInfo(name = "reps") val reps: Int,
@@ -24,7 +24,7 @@ data class Task(
     fun getTotalReps() = sets * reps
 
     companion object{
-        const val taskTable = "tasks"
+        const val tableName = "tasks"
     }
 
 }

@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlin.random.Random
 
-@Entity(tableName = Achievement.counterTable)
+@Entity(tableName = Achievement.tableName)
 class Achievement(
     @ColumnInfo(name = "sets") private val sets: Int,
     @ColumnInfo(name = "reps") private val reps: Int,
@@ -58,7 +58,7 @@ class Achievement(
     }
 
     companion object{
-        const val counterTable = "counters"
+        const val tableName = "counters"
         const val RADIUS_MIN = 200
         const val RADIUS_MAX = 500
     }
