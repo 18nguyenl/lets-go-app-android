@@ -36,13 +36,13 @@ class CounterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.counterTitleText.text = viewModel.counter.progress()
-        view.counter_intensity_unit_text.text = viewModel.counter.intensity
+        view.counter_intensity_unit_text.text = viewModel.counter.intensityInUnits
         view.counter_sets_reps_text.text = viewModel.counter.volume
         view.counter_tag_text.text = viewModel.counter.hashtag
 
         view.setOnClickListener { view ->
             if (viewModel.counter.isInProgress()) {
-                viewModel.incrementCounter()
+                viewModel.increment()
                 view.counterTitleText.text = viewModel.counter.progress()
             } else {
                 view.findNavController().popBackStack()

@@ -16,11 +16,13 @@ class CounterViewModel(
     val counter: Counter
 
     init{
+
         val task = runBlocking { taskDao.fetchByIDSynchronously(taskID) }
-        counter = Counter(task)
+        counter = Counter(task.sets, task.reps, task.intensity, task.unit, task.tag)    // WE WANT TO INSERT THIS INTO A DATABASE
+
     }
 
-    fun incrementCounter(){
+    fun increment(){
 
         if(counter.isInProgress())
             counter.increment()
