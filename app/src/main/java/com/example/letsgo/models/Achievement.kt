@@ -3,6 +3,7 @@ package com.example.letsgo.models
 import android.graphics.*
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import kotlin.random.Random
 
@@ -24,13 +25,11 @@ class Achievement(
     fun volume() = "${sets} × ${reps}"
     fun hashtag() = "#${tag}"
 
-    private val pointPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = colorStart
-        style = Paint.Style.FILL
-    }
-
-    lateinit var canvas: Canvas
-    lateinit var bitmap: Bitmap
+    @Ignore
+    private val pointPaint: Paint =
+        Paint(Paint.ANTI_ALIAS_FLAG).apply { color = colorStart; style = Paint.Style.FILL }
+    @ColumnInfo(name = "setProgress") lateinit var canvas: Canvas
+    @ColumnInfo(name = "bitmap") lateinit var bitmap: Bitmap
 
     @ColumnInfo(name = "setProgress") private var setProgress = 0
 

@@ -36,9 +36,9 @@ class CounterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.counterTitleText.text = viewModel.achievement.progress()
-        view.counter_intensity_unit_text.text = viewModel.achievement.intensityInUnits
-        view.counter_sets_reps_text.text = viewModel.achievement.volume
-        view.counter_tag_text.text = viewModel.achievement.hashtag
+        view.counter_intensity_unit_text.text = viewModel.achievement.intensityInUnits()
+        view.counter_sets_reps_text.text = viewModel.achievement.volume()
+        view.counter_tag_text.text = viewModel.achievement.hashtag()
 
         view.setOnClickListener { view ->
             if (viewModel.achievement.isInProgress()) {
