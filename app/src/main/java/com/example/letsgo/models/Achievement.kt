@@ -28,7 +28,7 @@ class Achievement(
     @Ignore
     private val pointPaint: Paint =
         Paint(Paint.ANTI_ALIAS_FLAG).apply { color = colorStart; style = Paint.Style.FILL }
-    @ColumnInfo(name = "setProgress") lateinit var canvas: Canvas
+    @ColumnInfo(name = "canvas") lateinit var canvas: Canvas
     @ColumnInfo(name = "bitmap") lateinit var bitmap: Bitmap
 
     @ColumnInfo(name = "setProgress") private var setProgress = 0
@@ -57,7 +57,7 @@ class Achievement(
     }
 
     companion object{
-        const val tableName = "counters"
+        const val tableName = "achievements"
         const val RADIUS_MIN = 200
         const val RADIUS_MAX = 500
     }
